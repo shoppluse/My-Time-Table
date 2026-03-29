@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personal Productivity Dashboard</title>
+  <title>Personal Productivity Dashboard V2</title>
   <style>
     :root {
       --bg: #0b1020;
@@ -14,6 +14,7 @@
       --accent: #7c3aed;
       --accent-2: #22d3ee;
       --success: #22c55e;
+      --warning: #f59e0b;
       --danger: #ef4444;
       --border: rgba(255, 255, 255, 0.08);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
@@ -36,13 +37,13 @@
     }
 
     .container {
-      max-width: 1300px;
+      max-width: 1350px;
       margin: 0 auto;
     }
 
     .header {
       display: grid;
-      grid-template-columns: 1.4fr 1fr;
+      grid-template-columns: 1.35fr 1fr;
       gap: 20px;
       margin-bottom: 24px;
     }
@@ -90,53 +91,70 @@
     }
 
     .clock-card {
-      padding: 24px;
+      padding: 22px;
+      display: grid;
+      grid-template-columns: 1fr 180px;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .clock-left {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      gap: 10px;
     }
 
     .clock-time {
-      font-size: 2.6rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 8px;
       letter-spacing: 1px;
     }
 
     .clock-date {
       color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 18px;
+      font-size: 0.95rem;
     }
 
-    .progress-wrap {
-      width: 100%;
-    }
-
-    .progress-top {
-      display: flex;
-      justify-content: space-between;
+    .status-badge {
+      display: inline-flex;
       align-items: center;
-      margin-bottom: 8px;
-      font-size: 14px;
+      width: fit-content;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      background: rgba(34, 211, 238, 0.12);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      color: #cffafe;
+    }
+
+    .ring-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 160px;
+      height: 160px;
+      margin: 0 auto;
+    }
+
+    .ring-wrap svg {
+      transform: rotate(-90deg);
+    }
+
+    .ring-center {
+      position: absolute;
+      text-align: center;
+    }
+
+    .ring-center .percent {
+      font-size: 1.8rem;
+      font-weight: 800;
+    }
+
+    .ring-center .label {
+      font-size: 0.8rem;
       color: var(--muted);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 999px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border-radius: 999px;
-      transition: width 0.3s ease;
     }
 
     .main-grid {
@@ -159,6 +177,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 18px;
+      gap: 12px;
+      flex-wrap: wrap;
     }
 
     .card-title h2 {
@@ -230,16 +250,8 @@
       width: 100%;
     }
 
-    .time-input {
-      font-size: 0.9rem;
-    }
-
-    .task-input, .priority-input, .focus-input {
-      font-size: 0.95rem;
-    }
-
     .task-item.completed {
-      opacity: 0.7;
+      opacity: 0.72;
       border-color: rgba(34, 197, 94, 0.35);
     }
 
@@ -304,6 +316,21 @@
       line-height: 1.5;
     }
 
+    .chart-box {
+      width: 100%;
+      height: 180px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 10px;
+    }
+
+    canvas {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
     .footer-note {
       text-align: center;
       margin-top: 20px;
@@ -313,6 +340,10 @@
 
     @media (max-width: 980px) {
       .header, .main-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .clock-card {
         grid-template-columns: 1fr;
       }
     }
@@ -327,7 +358,7 @@
       }
 
       .clock-time {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
 
       .task-item {
@@ -360,22 +391,43 @@
         <span class="badge">Execution Mode</span>
         <h1>Personal Productivity Dashboard</h1>
         <p>
-          A focused system to manage your day with discipline, clarity, and consistency.
-          Edit tasks, track progress, save notes, and execute without distraction.
+          Execute with discipline. Track completion, maintain streaks, and build momentum daily.
+          This dashboard is designed to keep your focus sharp and your actions measurable.
         </p>
       </div>
 
       <div class="clock-card">
-        <div class="clock-time" id="liveTime">--:--:--</div>
-        <div class="clock-date" id="liveDate">Loading date...</div>
+        <div class="clock-left">
+          <div class="clock-time" id="liveTime">--:--:--</div>
+          <div class="clock-date" id="liveDate">Loading date...</div>
+          <div class="status-badge" id="statusBadge">Start Strong</div>
+        </div>
 
-        <div class="progress-wrap">
-          <div class="progress-top">
-            <span>Daily Completion</span>
-            <span id="progressText">0%</span>
-          </div>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
+        <div class="ring-wrap">
+          <svg width="160" height="160">
+            <circle cx="80" cy="80" r="64" stroke="rgba(255,255,255,0.08)" stroke-width="12" fill="none"></circle>
+            <circle
+              id="progressCircle"
+              cx="80"
+              cy="80"
+              r="64"
+              stroke="url(#grad)"
+              stroke-width="12"
+              fill="none"
+              stroke-linecap="round"
+              stroke-dasharray="402.12"
+              stroke-dashoffset="402.12"
+            ></circle>
+            <defs>
+              <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#7c3aed" />
+                <stop offset="100%" stop-color="#22d3ee" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <div class="ring-center">
+            <div class="percent" id="ringPercent">0%</div>
+            <div class="label">Completed</div>
           </div>
         </div>
       </div>
@@ -388,7 +440,7 @@
             <h2>Today’s Schedule</h2>
             <button class="primary-btn" onclick="addTask()">+ Add Task</button>
           </div>
-          <p class="section-sub">Plan your time blocks. Check completed items to update your execution score.</p>
+          <p class="section-sub">Plan your time blocks. Check completed items to update your execution metrics.</p>
           <div class="schedule-list" id="scheduleList"></div>
         </div>
 
@@ -397,12 +449,36 @@
             <h2>Priority Tasks</h2>
             <button class="small-btn" onclick="addPriority()">+ Add Priority</button>
           </div>
-          <p class="section-sub">Your must-win tasks for the day. Keep this list short and high-impact.</p>
+          <p class="section-sub">Keep only your most important tasks here. High value. Zero clutter.</p>
           <div class="priority-list" id="priorityList"></div>
         </div>
       </div>
 
       <div class="right-column">
+        <div class="card">
+          <div class="card-title">
+            <h2>Performance Metrics</h2>
+          </div>
+          <div class="quick-stats">
+            <div class="stat-box">
+              <div class="label">Total Tasks</div>
+              <div class="value" id="totalTasks">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Completed</div>
+              <div class="value" id="completedTasks">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Execution Score</div>
+              <div class="value" id="executionScore">0</div>
+            </div>
+            <div class="stat-box">
+              <div class="label">Current Streak</div>
+              <div class="value" id="streakCount">0</div>
+            </div>
+          </div>
+        </div>
+
         <div class="card">
           <div class="card-title">
             <h2>Daily Focus</h2>
@@ -420,17 +496,11 @@
 
         <div class="card">
           <div class="card-title">
-            <h2>Execution Stats</h2>
+            <h2>7-Day Momentum</h2>
           </div>
-          <div class="quick-stats">
-            <div class="stat-box">
-              <div class="label">Total Tasks</div>
-              <div class="value" id="totalTasks">0</div>
-            </div>
-            <div class="stat-box">
-              <div class="label">Completed</div>
-              <div class="value" id="completedTasks">0</div>
-            </div>
+          <p class="section-sub">A visual record of your recent consistency and execution trend.</p>
+          <div class="chart-box">
+            <canvas id="progressChart" width="400" height="180"></canvas>
           </div>
         </div>
 
@@ -438,23 +508,26 @@
           <div class="card-title">
             <h2>Notes</h2>
           </div>
-          <p class="section-sub">Use this for reminders, key ideas, or important instructions.</p>
+          <p class="section-sub">Capture reminders, insights, or instructions for the day.</p>
           <textarea id="notesArea" placeholder="Write your notes here..." oninput="saveNotes()"></textarea>
         </div>
       </div>
     </section>
 
     <div class="footer-note">
-      Data auto-saves in your browser (LocalStorage). Designed for GitHub Pages deployment.
+      Data auto-saves in your browser (LocalStorage). Optimized for GitHub Pages.
     </div>
   </div>
 
   <script>
     const STORAGE_KEYS = {
-      tasks: "ppd_tasks",
-      priorities: "ppd_priorities",
-      notes: "ppd_notes",
-      focus: "ppd_focus"
+      tasks: "ppd_v2_tasks",
+      priorities: "ppd_v2_priorities",
+      notes: "ppd_v2_notes",
+      focus: "ppd_v2_focus",
+      history: "ppd_v2_history",
+      streak: "ppd_v2_streak",
+      lastUpdated: "ppd_v2_lastUpdated"
     };
 
     let tasks = JSON.parse(localStorage.getItem(STORAGE_KEYS.tasks)) || [
@@ -465,19 +538,27 @@
     ];
 
     let priorities = JSON.parse(localStorage.getItem(STORAGE_KEYS.priorities)) || [
-      "Complete the most important task first",
+      "Complete the highest value task first",
       "Avoid distractions during focus blocks",
-      "Finish the day with review"
+      "Finish with a review and reset"
     ];
+
+    let history = JSON.parse(localStorage.getItem(STORAGE_KEYS.history)) || [];
+    let streak = parseInt(localStorage.getItem(STORAGE_KEYS.streak)) || 0;
 
     const scheduleList = document.getElementById("scheduleList");
     const priorityList = document.getElementById("priorityList");
-    const progressFill = document.getElementById("progressFill");
-    const progressText = document.getElementById("progressText");
-    const totalTasksEl = document.getElementById("totalTasks");
-    const completedTasksEl = document.getElementById("completedTasks");
     const notesArea = document.getElementById("notesArea");
     const dailyFocus = document.getElementById("dailyFocus");
+    const totalTasksEl = document.getElementById("totalTasks");
+    const completedTasksEl = document.getElementById("completedTasks");
+    const executionScoreEl = document.getElementById("executionScore");
+    const streakCountEl = document.getElementById("streakCount");
+    const ringPercent = document.getElementById("ringPercent");
+    const progressCircle = document.getElementById("progressCircle");
+    const statusBadge = document.getElementById("statusBadge");
+
+    const circleLength = 2 * Math.PI * 64;
 
     function saveTasks() {
       localStorage.setItem(STORAGE_KEYS.tasks, JSON.stringify(tasks));
@@ -539,7 +620,7 @@
         scheduleList.appendChild(item);
       });
 
-      updateProgress();
+      updateMetrics();
     }
 
     function addPriority() {
@@ -563,6 +644,7 @@
       priorities.forEach((item, index) => {
         const row = document.createElement("div");
         row.className = "task-item";
+        row.style.gridTemplateColumns = "auto 1fr auto";
 
         row.innerHTML = `
           <div style="width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));"></div>
@@ -570,20 +652,144 @@
           <button class="delete-btn" onclick="deletePriority(${index})">Delete</button>
         `;
 
-        row.style.gridTemplateColumns = "auto 1fr auto";
         priorityList.appendChild(row);
       });
     }
 
-    function updateProgress() {
+    function updateMetrics() {
       const total = tasks.length;
       const completed = tasks.filter(task => task.completed).length;
       const percent = total === 0 ? 0 : Math.round((completed / total) * 100);
 
-      progressFill.style.width = `${percent}%`;
-      progressText.textContent = `${percent}%`;
       totalTasksEl.textContent = total;
       completedTasksEl.textContent = completed;
+      executionScoreEl.textContent = percent;
+      streakCountEl.textContent = streak;
+      ringPercent.textContent = `${percent}%`;
+
+      const offset = circleLength - (circleLength * percent / 100);
+      progressCircle.style.strokeDasharray = circleLength;
+      progressCircle.style.strokeDashoffset = offset;
+
+      statusBadge.textContent = getStatusText(percent);
+
+      updateDailyHistory(percent);
+      drawChart();
+    }
+
+    function getStatusText(percent) {
+      if (percent === 100) return "Mission Complete";
+      if (percent >= 76) return "Almost There";
+      if (percent >= 51) return "Momentum Building";
+      if (percent >= 26) return "Keep Moving";
+      return "Start Strong";
+    }
+
+    function getTodayKey() {
+      const now = new Date();
+      return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+    }
+
+    function updateDailyHistory(percent) {
+      const today = getTodayKey();
+      const existingIndex = history.findIndex(item => item.date === today);
+
+      if (existingIndex >= 0) {
+        history[existingIndex].value = percent;
+      } else {
+        history.push({ date: today, value: percent });
+      }
+
+      history = history.slice(-7);
+      localStorage.setItem(STORAGE_KEYS.history, JSON.stringify(history));
+      updateStreak(percent);
+    }
+
+    function updateStreak(percent) {
+      const today = getTodayKey();
+      const lastUpdated = localStorage.getItem(STORAGE_KEYS.lastUpdated);
+
+      if (lastUpdated === today) {
+        return;
+      }
+
+      if (percent === 100) {
+        streak += 1;
+      } else {
+        streak = streak;
+      }
+
+      localStorage.setItem(STORAGE_KEYS.streak, String(streak));
+      localStorage.setItem(STORAGE_KEYS.lastUpdated, today);
+      streakCountEl.textContent = streak;
+    }
+
+    function drawChart() {
+      const canvas = document.getElementById("progressChart");
+      const ctx = canvas.getContext("2d");
+      const w = canvas.width;
+      const h = canvas.height;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const padding = 28;
+      const chartW = w - padding * 2;
+      const chartH = h - padding * 2;
+
+      ctx.strokeStyle = "rgba(255,255,255,0.08)";
+      ctx.lineWidth = 1;
+
+      for (let i = 0; i <= 4; i++) {
+        const y = padding + (chartH / 4) * i;
+        ctx.beginPath();
+        ctx.moveTo(padding, y);
+        ctx.lineTo(w - padding, y);
+        ctx.stroke();
+      }
+
+      const points = [];
+      const data = history.length ? history : [
+        { date: "D1", value: 0 },
+        { date: "D2", value: 0 },
+        { date: "D3", value: 0 },
+        { date: "D4", value: 0 },
+        { date: "D5", value: 0 },
+        { date: "D6", value: 0 },
+        { date: "D7", value: 0 }
+      ];
+
+      const count = data.length;
+
+      data.forEach((item, i) => {
+        const x = padding + (count === 1 ? chartW / 2 : (chartW / (count - 1)) * i);
+        const y = padding + chartH - (item.value / 100) * chartH;
+        points.push({ x, y, value: item.value, date: item.date });
+      });
+
+      if (points.length > 1) {
+        ctx.beginPath();
+        ctx.strokeStyle = "#22d3ee";
+        ctx.lineWidth = 3;
+        ctx.moveTo(points[0].x, points[0].y);
+
+        for (let i = 1; i < points.length; i++) {
+          ctx.lineTo(points[i].x, points[i].y);
+        }
+
+        ctx.stroke();
+      }
+
+      points.forEach((p, i) => {
+        ctx.beginPath();
+        ctx.fillStyle = "#7c3aed";
+        ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = "rgba(165,180,252,0.9)";
+        ctx.font = "11px sans-serif";
+        ctx.textAlign = "center";
+        ctx.fillText(`D${Math.max(1, data.length - points.length + i + 1)}`, p.x, h - 8);
+      });
     }
 
     function updateClock() {
@@ -621,6 +827,7 @@
       renderTasks();
       renderPriorities();
       updateClock();
+      drawChart();
       setInterval(updateClock, 1000);
     }
 
