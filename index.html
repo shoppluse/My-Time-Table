@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISKCON FARM HOUSE | Hare Krishna Nature Farm</title>
 
+  <!-- PWA / Installable -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b1f10" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -621,6 +627,8 @@
 
     .plant-card{
       overflow: hidden;
+      display: block;
+      cursor: pointer;
     }
 
     .plant-image{
@@ -1474,7 +1482,7 @@
       </p>
 
       <div class="grid plants-grid">
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=rice" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=80" alt="Rice">
             <span class="plant-badge">Grain</span>
@@ -1484,9 +1492,9 @@
             <p>Traditionally cultivated rice grown naturally and used in temple cooking and prasadam preparation.</p>
             <div class="plant-purpose">Purpose: Daily prasadam & temple kitchen support</div>
           </div>
-        </div>
+        </a>
 
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=banana" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=900&q=80" alt="Banana">
             <span class="plant-badge">Fruit</span>
@@ -1496,9 +1504,9 @@
             <p>Banana plants provide nutritious fruits and leaves that can be used in devotional and traditional settings.</p>
             <div class="plant-purpose">Purpose: Offerings, prasadam, and natural farm utility</div>
           </div>
-        </div>
+        </a>
 
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=coconut" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1615485925873-6f4f89cbb6d8?auto=format&fit=crop&w=900&q=80" alt="Coconut">
             <span class="plant-badge">Sacred Fruit</span>
@@ -1508,9 +1516,9 @@
             <p>Coconut is considered auspicious and useful in temple offerings, cooking, and traditional rituals.</p>
             <div class="plant-purpose">Purpose: Deity offerings and ceremonial use</div>
           </div>
-        </div>
+        </a>
 
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=vegetables" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Vegetables">
             <span class="plant-badge">Vegetables</span>
@@ -1520,9 +1528,9 @@
             <p>A variety of naturally grown vegetables that support healthy cooking for devotees and guests.</p>
             <div class="plant-purpose">Purpose: Temple cooking and free prasadam distribution</div>
           </div>
-        </div>
+        </a>
 
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=flowers" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1592841200221-9f9c88d8b0d5?auto=format&fit=crop&w=900&q=80" alt="Flowers">
             <span class="plant-badge">Flowers</span>
@@ -1532,9 +1540,9 @@
             <p>Fragrant and colorful flowers such as marigold, rose, and jasmine for garlands and worship.</p>
             <div class="plant-purpose">Purpose: Daily deity decoration and altar seva</div>
           </div>
-        </div>
+        </a>
 
-        <div class="card plant-card reveal">
+        <a href="productdetail.html?plant=tulasi" class="card plant-card reveal">
           <div class="plant-image">
             <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Tulasi">
             <span class="plant-badge">Sacred Plant</span>
@@ -1544,7 +1552,7 @@
             <p>Tulasi Maharani is lovingly maintained as a sacred and central part of devotional farm life.</p>
             <div class="plant-purpose">Purpose: Worship, spiritual significance, and devotional care</div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -1748,7 +1756,7 @@
               <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
               <div class="info-text">
                 <h4>Suggested Visiting Hours</h4>
-                <p>Morning: 7:00 AM – 11:00 AM | Evening: 4:00 PM – 6:30 PM</p>
+                <p>9:00 AM – 1:00 AM</p>
               </div>
             </div>
           </div>
@@ -1926,6 +1934,15 @@
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Service Worker Registration (PWA)
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then((reg) => console.log("SW registered:", reg.scope))
+          .catch((err) => console.log("SW registration failed:", err));
+      });
+    }
   </script>
 </body>
 </html>
