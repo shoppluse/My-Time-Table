@@ -1,13 +1,13 @@
 {
   "name": "ISKCON FARM HOUSE",
   "short_name": "ISKCON Farm",
-  "description": "A sacred 108-acre devotional farm dedicated to Krishna seva, temple offerings, and free prasadam distribution.",
+  "description": "Hare Krishna Nature Farm - Sacred agriculture for Krishna seva, temple offerings, and free prasadam.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "orientation": "portrait",
   "background_color": "#07180d",
   "theme_color": "#0b1f10",
-  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "icon-192.png",
