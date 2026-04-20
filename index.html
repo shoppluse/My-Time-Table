@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISKCON FARM HOUSE | Hare Krishna Nature Farm</title>
 
-  <!-- PWA / Installable -->
+  <!-- PWA / Installable (kept, but SW disabled temporarily) -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0b1f10" />
   <link rel="icon" href="icon-192.png" />
@@ -181,7 +181,6 @@
       border-color: rgba(201, 239, 71, 0.22);
     }
 
-    /* Topbar */
     .topbar{
       background: #0a0f0c;
       border-bottom: 1px solid rgba(255,255,255,0.05);
@@ -213,7 +212,6 @@
       margin-right: 8px;
     }
 
-    /* Navbar */
     header{
       position: fixed;
       top: 43px;
@@ -316,7 +314,6 @@
       cursor: pointer;
     }
 
-    /* Hero */
     .hero{
       min-height: 100vh;
       display: flex;
@@ -501,7 +498,6 @@
       line-height: 1.5;
     }
 
-    /* Features */
     .features-grid{
       grid-template-columns: repeat(4, 1fr);
       margin-top: 40px;
@@ -535,7 +531,6 @@
       font-size: 0.96rem;
     }
 
-    /* About */
     .about-wrap{
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -619,7 +614,6 @@
       color: var(--primary);
     }
 
-    /* Plants */
     .plants-grid{
       grid-template-columns: repeat(3, 1fr);
       margin-top: 40px;
@@ -684,7 +678,6 @@
       font-weight: 600;
     }
 
-    /* Temple Service */
     .services-grid{
       grid-template-columns: repeat(3, 1fr);
       margin-top: 40px;
@@ -719,7 +712,6 @@
       margin-bottom: 18px;
     }
 
-    /* Process */
     .process-grid{
       grid-template-columns: repeat(5, 1fr);
       margin-top: 40px;
@@ -759,7 +751,6 @@
       font-size: 0.93rem;
     }
 
-    /* Testimonials */
     .testimonials-grid{
       grid-template-columns: repeat(3, 1fr);
       margin-top: 40px;
@@ -811,7 +802,6 @@
       font-size: 0.9rem;
     }
 
-    /* CTA */
     .cta{
       padding: 0 0 90px;
     }
@@ -850,7 +840,6 @@
       flex-wrap: wrap;
     }
 
-    /* Contact */
     .contact-wrap{
       display: grid;
       grid-template-columns: 0.95fr 1.05fr;
@@ -940,7 +929,6 @@
       min-height: 150px;
     }
 
-    /* Footer */
     footer{
       padding: 26px 0;
       border-top: 1px solid rgba(255,255,255,0.06);
@@ -982,7 +970,6 @@
       transform: translateY(-4px);
     }
 
-    /* Scroll To Top */
     .scroll-top{
       position: fixed;
       right: 22px;
@@ -1010,7 +997,6 @@
       transform: translateY(0);
     }
 
-    /* Reveal Animation */
     .reveal{
       opacity: 0;
       transform: translateY(35px);
@@ -1022,7 +1008,6 @@
       transform: translateY(0);
     }
 
-    /* Mobile Menu */
     .mobile-menu{
       position: fixed;
       top: 0;
@@ -1233,7 +1218,6 @@
 </head>
 <body>
 
-  <!-- Topbar -->
   <div class="topbar">
     <div class="container topbar-wrap">
       <div class="topbar-left">
@@ -1247,7 +1231,6 @@
     </div>
   </div>
 
-  <!-- Header -->
   <header id="header">
     <div class="container navbar">
       <a href="#home" class="logo">
@@ -1270,7 +1253,6 @@
     </div>
   </header>
 
-  <!-- Mobile Menu -->
   <div class="menu-overlay" id="menuOverlay"></div>
   <aside class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-top">
@@ -1292,7 +1274,6 @@
     <a href="#contact" class="btn btn-primary">Plan a Visit</a>
   </aside>
 
-  <!-- Hero -->
   <section class="hero" id="home">
     <div class="container hero-wrap">
       <div class="hero-content reveal">
@@ -1382,7 +1363,6 @@
     </div>
   </section>
 
-  <!-- Highlights -->
   <section id="features">
     <div class="container">
       <span class="section-tag reveal">Farm Highlights</span>
@@ -1420,7 +1400,6 @@
     </div>
   </section>
 
-  <!-- About -->
   <section id="about">
     <div class="container about-wrap">
       <div class="about-images reveal">
@@ -1470,7 +1449,6 @@
     </div>
   </section>
 
-  <!-- Plant Collection -->
   <section id="plants">
     <div class="container">
       <span class="section-tag reveal">Our Sacred Plant Collection</span>
@@ -1557,7 +1535,6 @@
     </div>
   </section>
 
-  <!-- Temple Seva -->
   <section id="services">
     <div class="container">
       <span class="section-tag reveal">How the Farm Serves the Temple</span>
@@ -1589,7 +1566,6 @@
     </div>
   </section>
 
-  <!-- Sacred Journey -->
   <section id="process">
     <div class="container">
       <span class="section-tag reveal">From Field to Prasadam</span>
@@ -1632,7 +1608,6 @@
     </div>
   </section>
 
-  <!-- Visitor Reflections -->
   <section id="testimonials">
     <div class="container">
       <span class="section-tag reveal">Visitor Reflections</span>
@@ -1694,7 +1669,6 @@
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="cta">
     <div class="container">
       <div class="cta-box reveal">
@@ -1714,7 +1688,6 @@
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <span class="section-tag reveal">Visit the Farm</span>
@@ -1792,7 +1765,6 @@
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div class="container footer-wrap">
       <div class="footer-left">
@@ -1808,12 +1780,26 @@
     </div>
   </footer>
 
-  <!-- Scroll Top -->
   <button class="scroll-top" id="scrollTop">
     <i class="fa-solid fa-arrow-up"></i>
   </button>
 
   <script>
+    // REMOVE OLD SERVICE WORKERS + CACHE (VERY IMPORTANT FIX)
+    (function () {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => registration.unregister());
+        });
+      }
+
+      if ("caches" in window) {
+        caches.keys().then((names) => {
+          names.forEach((name) => caches.delete(name));
+        });
+      }
+    })();
+
     // Navbar scroll effect
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
@@ -1934,15 +1920,6 @@
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Service Worker Registration (PWA)
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js")
-          .then((reg) => console.log("SW registered:", reg.scope))
-          .catch((err) => console.log("SW registration failed:", err));
-      });
-    }
   </script>
 </body>
 </html>
