@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant Details | ISKCON FARM HOUSE</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <style>
+    :root{
+      --bg-dark: #07180d;
+      --bg-dark-2: #0d2414;
+      --bg-card: rgba(255,255,255,0.06);
+      --primary: #c9ef47;
+      --primary-dark: #a8d62d;
+      --text-light: #f5f7f2;
+      --text-soft: #d0dacb;
+      --text-muted: #9fb09c;
+      --border: rgba(255,255,255,0.12);
+      --shadow: 0 20px 50px rgba(0,0,0,0.25);
+      --radius: 18px;
+      --transition: all 0.35s ease;
+      --max-width: 1280px;
+    }
+
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html{
+      scroll-behavior: smooth;
+    }
+
+    body{
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, #07180d 0%, #0a1f11 40%, #0d2414 100%);
+      color: var(--text-light);
+      overflow-x: hidden;
+    }
+
+    body::-webkit-scrollbar{
+      width: 10px;
+    }
+
+    body::-webkit-scrollbar-thumb{
+      background: var(--primary);
+      border-radius: 50px;
+    }
+
+    body::-webkit-scrollbar-track{
+      background: #09140c;
+    }
+
+    a{
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img{
+      max-width: 100%;
+      display: block;
+    }
+
+    .container{
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 24px;
+      border-radius: 14px;
+      font-weight: 700;
+      font-size: 0.96rem;
+      border: 1px solid transparent;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .btn-primary{
+      background: var(--primary);
+      color: #122006;
+      box-shadow: 0 12px 30px rgba(201, 239, 71, 0.18);
+    }
+
+    .btn-primary:hover{
+      transform: translateY(-4px);
+      background: var(--primary-dark);
+    }
+
+    .btn-outline{
+      border: 1px solid rgba(255,255,255,0.22);
+      color: var(--text-light);
+      background: rgba(255,255,255,0.04);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-outline:hover{
+      transform: translateY(-4px);
+      border-color: var(--primary);
+      color: var(--primary);
+      background: rgba(201, 239, 71, 0.05);
+    }
+
+    .card{
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    /* Topbar */
+    .topbar{
+      background: #0a0f0c;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding: 10px 0;
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      position: relative;
+      z-index: 1000;
+    }
+
+    .topbar-wrap{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .topbar-left,
+    .topbar-right{
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .topbar i{
+      color: var(--primary);
+      margin-right: 8px;
+    }
+
+    /* Header */
+    header{
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      background: rgba(7, 24, 13, 0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .navbar{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .logo{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: white;
+    }
+
+    .logo-icon{
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #e5ff7a, #9fc922 70%);
+      display: grid;
+      place-items: center;
+      color: #17320c;
+      box-shadow: 0 8px 25px rgba(201, 239, 71, 0.25);
+      font-size: 1.2rem;
+    }
+
+    .logo span{
+      color: var(--primary);
+    }
+
+    /* Hero */
+    .detail-hero{
+      padding: 70px 0 50px;
+    }
+
+    .hero-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-image{
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      min-height: 420px;
+    }
+
+    .hero-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-content{
+      padding: 10px 0;
+    }
+
+    .badge{
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(201, 239, 71, 0.12);
+      color: var(--primary);
+      border: 1px solid rgba(201, 239, 71, 0.18);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .hero-title{
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1.05;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .hero-title span{
+      color: var(--primary);
+    }
+
+    .hero-tagline{
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-desc{
+      color: var(--text-soft);
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* Quick Info */
+    .section{
+      padding: 24px 0 70px;
+    }
+
+    .section-title{
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+
+    .section-title span{
+      color: var(--primary);
+    }
+
+    .section-subtitle{
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 28px;
+      max-width: 760px;
+    }
+
+    .info-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .info-card{
+      padding: 22px;
+    }
+
+    .info-label{
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+    }
+
+    .info-value{
+      color: var(--text-light);
+      font-weight: 700;
+      font-size: 1rem;
+    }
+
+    /* Two Column Sections */
+    .two-col{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .content-card{
+      padding: 28px;
+    }
+
+    .content-card h3{
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.3rem;
+      margin-bottom: 14px;
+      color: var(--text-light);
+    }
+
+    .content-card p{
+      color: var(--text-soft);
+      line-height: 1.85;
+      margin-bottom: 14px;
+    }
+
+    .list{
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .list li{
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--text-soft);
+      line-height: 1.7;
+    }
+
+    .list i{
+      color: var(--primary);
+      margin-top: 4px;
+    }
+
+    /* Benefits */
+    .benefits-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .benefit-card{
+      padding: 24px;
+    }
+
+    .benefit-icon{
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: rgba(201, 239, 71, 0.12);
+      color: var(--primary);
+      font-size: 1.2rem;
+      margin-bottom: 14px;
+    }
+
+    .benefit-card h4{
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+
+    .benefit-card p{
+      color: var(--text-soft);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    /* Related */
+    .related-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 24px;
+    }
+
+    .related-card{
+      display: block;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .related-card:hover{
+      transform: translateY(-6px);
+      border-color: rgba(201, 239, 71, 0.22);
+    }
+
+    .related-image{
+      height: 200px;
+      overflow: hidden;
+    }
+
+    .related-image img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .related-content{
+      padding: 18px;
+    }
+
+    .related-content h4{
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .related-content p{
+      color: var(--text-soft);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+
+    /* Footer */
+    footer{
+      padding: 26px 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.12);
+      margin-top: 40px;
+    }
+
+    .footer-wrap{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-left{
+      color: var(--text-soft);
+    }
+
+    .socials{
+      display: flex;
+      gap: 12px;
+    }
+
+    .socials a{
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-light);
+      transition: var(--transition);
+    }
+
+    .socials a:hover{
+      color: #17320c;
+      background: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    @media (max-width: 1100px){
+      .hero-grid,
+      .two-col{
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid,
+      .benefits-grid,
+      .related-grid{
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px){
+      .topbar{
+        display: none;
+      }
+
+      .info-grid,
+      .benefits-grid,
+      .related-grid{
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image{
+        min-height: 280px;
+      }
+
+      .hero-actions{
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-actions .btn{
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topbar -->
+  <div class="topbar">
+    <div class="container topbar-wrap">
+      <div class="topbar-left">
+        <span><i class="fa-solid fa-leaf"></i> 108 Acres of Sacred Organic Farming</span>
+        <span><i class="fa-solid fa-hands-praying"></i> Cultivated for Temple Seva & Free Prasadam</span>
+      </div>
+      <div class="topbar-right">
+        <span><i class="fa-solid fa-phone"></i> +91 9945243930</span>
+        <span><i class="fa-solid fa-envelope"></i> anirudhsa3101@gmail.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
+        Hare Krishna <span>Nature Farm</span>
+      </a>
+
+      <a href="index.html" class="btn btn-primary">
+        <i class="fa-solid fa-arrow-left"></i> Back to Home
+      </a>
+    </div>
+  </header>
+
+  <!-- Plant Detail Hero -->
+  <section class="detail-hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-image card">
+          <img id="plantImage" src="" alt="Plant Image">
+        </div>
+
+        <div class="hero-content">
+          <div class="badge" id="plantCategory">Category</div>
+          <h1 class="hero-title" id="plantName">Plant <span>Details</span></h1>
+          <div class="hero-tagline" id="plantTagline">Sacred plant description</div>
+          <p class="hero-desc" id="plantShortDesc"></p>
+
+          <div class="hero-actions">
+            <a href="#fullDetails" class="btn btn-primary">
+              Explore Details <i class="fa-solid fa-arrow-down"></i>
+            </a>
+            <a href="index.html#plants" class="btn btn-outline">
+              View All Plants <i class="fa-solid fa-seedling"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Info -->
+  <section class="section" id="fullDetails">
+    <div class="container">
+      <h2 class="section-title">Quick <span>Information</span></h2>
+      <p class="section-subtitle">
+        A quick overview of this plant’s category, botanical identity, devotional relevance, and role in the sacred ecosystem of the farm.
+      </p>
+
+      <div class="info-grid">
+        <div class="card info-card">
+          <div class="info-label">Scientific Name</div>
+          <div class="info-value" id="scientificName">-</div>
+        </div>
+        <div class="card info-card">
+          <div class="info-label">Main Temple Use</div>
+          <div class="info-value" id="mainUse">-</div>
+        </div>
+        <div class="card info-card">
+          <div class="info-label">Farm Zone</div>
+          <div class="info-value" id="farmZone">-</div>
+        </div>
+        <div class="card info-card">
+          <div class="info-label">Season</div>
+          <div class="info-value" id="season">-</div>
+        </div>
+        <div class="card info-card">
+          <div class="info-label">Growth Type</div>
+          <div class="info-value" id="growthType">-</div>
+        </div>
+        <div class="card info-card">
+          <div class="info-label">Temple Importance</div>
+          <div class="info-value" id="templeImportance">-</div>
+        </div>
+      </div>
+
+      <!-- Description + Spiritual -->
+      <div class="two-col">
+        <div class="card content-card">
+          <h3>Detailed Description</h3>
+          <p id="detailedDescription"></p>
+        </div>
+
+        <div class="card content-card">
+          <h3>Spiritual Significance</h3>
+          <p id="spiritualSignificance"></p>
+        </div>
+      </div>
+
+      <!-- Temple Purpose + Cultivation -->
+      <div class="two-col">
+        <div class="card content-card">
+          <h3>Temple / Farm Purpose</h3>
+          <ul class="list" id="templePurposeList"></ul>
+        </div>
+
+        <div class="card content-card">
+          <h3>Cultivation Details</h3>
+          <ul class="list" id="cultivationList"></ul>
+        </div>
+      </div>
+
+      <!-- Benefits -->
+      <div style="margin-top: 42px;">
+        <h2 class="section-title">Benefits & <span>Value</span></h2>
+        <p class="section-subtitle">
+          This plant contributes to nourishment, ecology, devotional life, and the natural balance of the farm.
+        </p>
+
+        <div class="benefits-grid" id="benefitsGrid"></div>
+      </div>
+
+      <!-- Interesting Note -->
+      <div class="card content-card" style="margin-top: 28px;">
+        <h3>Interesting Note / Traditional Importance</h3>
+        <p id="interestingNote"></p>
+      </div>
+
+      <!-- Related Plants -->
+      <div style="margin-top: 42px;">
+        <h2 class="section-title">Related <span>Plants</span></h2>
+        <p class="section-subtitle">
+          Explore more sacred and useful plants grown across the 108-acre farm ecosystem.
+        </p>
+
+        <div class="related-grid" id="relatedGrid"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-wrap">
+      <div class="footer-left">
+        © <span id="year"></span> <strong>ISKCON FARM HOUSE</strong> — Hare Krishna Nature Farm. Built with devotion 🌿🙏
+      </div>
+
+      <div class="socials">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const plantData = {
+      rice: {
+        name: "Sacred Rice",
+        category: "Grain",
+        image: "https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=1400&q=80",
+        tagline: "A nourishing grain cultivated for temple cooking and prasadam seva.",
+        shortDesc: "Sacred Rice is traditionally grown with natural farming methods and serves as a foundational grain in temple kitchen preparations and prasadam distribution.",
+        scientificName: "Oryza sativa",
+        mainUse: "Temple cooking & prasadam",
+        farmZone: "Grain Cultivation Zone",
+        season: "Monsoon / Seasonal Cycle",
+        growthType: "Seasonal Crop",
+        templeImportance: "Daily Kitchen Support",
+        detailedDescription: "Rice is one of the most essential crops in sacred agriculture and plays a central role in nourishing temple life. At ISKCON FARM HOUSE, rice is cultivated with devotion and care using natural methods that support soil health and purity. It is used regularly in preparing offerings and prasadam meals, making it one of the most meaningful crops in the farm ecosystem.",
+        spiritualSignificance: "Rice represents nourishment, abundance, and service. In the temple setting, it supports the preparation of food that is first offered to Lord Krishna and then distributed as prasadam. Because of its central place in daily cooking, rice becomes part of the devotional cycle from cultivation to offering to free distribution.",
+        templePurpose: [
+          "Used in daily temple kitchen preparations",
+          "Supports prasadam meals for devotees and visitors",
+          "Forms part of regular food offerings to Lord Krishna"
+        ],
+        cultivation: [
+          "Soil: Fertile, water-retentive soil",
+          "Water: Requires consistent irrigation",
+          "Sunlight: Full sunlight preferred",
+          "Season: Best in monsoon-linked cycles",
+          "Method: Naturally cultivated with soil care practices"
+        ],
+        benefits: [
+          { icon: "fa-bowl-rice", title: "Nourishment", text: "Provides staple nutrition and supports large-scale prasadam preparation." },
+          { icon: "fa-leaf", title: "Farm Stability", text: "A dependable grain crop that strengthens the farm’s food ecosystem." },
+          { icon: "fa-hands-praying", title: "Devotional Value", text: "Directly linked to temple offerings and sanctified meal preparation." }
+        ],
+        interestingNote: "Rice is often considered a symbol of prosperity and nourishment in traditional culture, and in a devotional farm it becomes especially meaningful because it supports sacred offerings and free prasadam distribution.",
+        related: ["banana", "vegetables", "coconut"]
+      },
+
+      banana: {
+        name: "Banana Grove",
+        category: "Fruit",
+        image: "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=1400&q=80",
+        tagline: "A versatile and nourishing fruit plant with devotional and traditional importance.",
+        shortDesc: "Banana plants provide nutritious fruits and useful leaves, making them valuable for offerings, prasadam, and traditional farm utility.",
+        scientificName: "Musa paradisiaca",
+        mainUse: "Offerings & prasadam",
+        farmZone: "Fruit Grove Section",
+        season: "Year-round in warm climate",
+        growthType: "Perennial Herbaceous Plant",
+        templeImportance: "Fruit Offering Support",
+        detailedDescription: "Banana is a highly useful and spiritually significant plant in traditional Indian farm culture. At ISKCON FARM HOUSE, banana plants contribute fruits for temple use and may also provide leaves for natural serving or ritual-related applications. Their lush growth adds beauty, shade, and productivity to the sacred farm environment.",
+        spiritualSignificance: "Banana fruits are often included in devotional offerings, and the plant itself is respected for its generosity and usefulness. In a sacred farm, it represents nourishment, simplicity, and abundance offered in Krishna’s service.",
+        templePurpose: [
+          "Banana fruits used in devotional offerings",
+          "Supports prasadam preparation and natural food service",
+          "Adds natural greenery and practical value to the farm"
+        ],
+        cultivation: [
+          "Soil: Rich, well-drained soil",
+          "Water: Moderate to high watering",
+          "Sunlight: Full to partial sunlight",
+          "Season: Productive in warm tropical climate",
+          "Method: Organic mulching and moisture retention are helpful"
+        ],
+        benefits: [
+          { icon: "fa-apple-whole", title: "Nutritious Fruit", text: "Provides natural energy and nutrition for prasadam and devotees." },
+          { icon: "fa-tree", title: "Farm Utility", text: "Leaves and plant structure can be used in traditional natural settings." },
+          { icon: "fa-hands-praying", title: "Offering Relevance", text: "Fruits are commonly suitable for temple offering and devotional use." }
+        ],
+        interestingNote: "Banana is considered one of the most useful plants in traditional farm culture because nearly every part of the plant can serve a meaningful purpose.",
+        related: ["coconut", "rice", "tulasi"]
+      },
+
+      coconut: {
+        name: "Coconut Trees",
+        category: "Sacred Fruit",
+        image: "https://images.unsplash.com/photo-1615485925873-6f4f89cbb6d8?auto=format&fit=crop&w=1400&q=80",
+        tagline: "An auspicious and sacred tree valued in offerings, rituals, and temple utility.",
+        shortDesc: "Coconut is considered highly auspicious and is widely used in temple offerings, cooking, and traditional ceremonial practices.",
+        scientificName: "Cocos nucifera",
+        mainUse: "Offerings & ceremonial use",
+        farmZone: "Sacred Tree Belt",
+        season: "Perennial",
+        growthType: "Long-living Tree",
+        templeImportance: "Auspicious Ritual Support",
+        detailedDescription: "Coconut trees are a valuable part of sacred agriculture due to their devotional, practical, and ecological importance. Their fruits can be used in offerings, cooking, and ceremonial activities. Their presence also enhances the beauty and stability of the farm landscape, making them a strong long-term asset in a spiritual ecosystem.",
+        spiritualSignificance: "Coconut is traditionally regarded as auspicious and is frequently used in devotional and ceremonial settings. Its purity, symbolism, and wide use in temple activities make it a deeply respected part of sacred farm cultivation.",
+        templePurpose: [
+          "Used in ceremonial and devotional offerings",
+          "Supports temple cooking and sacred preparations",
+          "Enhances the spiritual and natural environment of the farm"
+        ],
+        cultivation: [
+          "Soil: Sandy or well-drained fertile soil",
+          "Water: Regular watering in early stages",
+          "Sunlight: Full sunlight required",
+          "Season: Perennial growth across years",
+          "Method: Best maintained with deep-root support and spacing"
+        ],
+        benefits: [
+          { icon: "fa-tree", title: "Long-Term Value", text: "Provides long-term ecological and practical benefits to the farm." },
+          { icon: "fa-hands-praying", title: "Sacred Use", text: "Highly relevant in offerings, rituals, and auspicious temple activities." },
+          { icon: "fa-droplet", title: "Natural Utility", text: "Fruit and tree components can support many traditional uses." }
+        ],
+        interestingNote: "In many devotional and traditional settings, coconut is considered a pure and auspicious offering, making it especially valuable in temple-related agriculture.",
+        related: ["banana", "flowers", "tulasi"]
+      },
+
+      vegetables: {
+        name: "Seasonal Vegetables",
+        category: "Vegetables",
+        image: "https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1400&q=80",
+        tagline: "Fresh seasonal produce that supports healthy cooking and prasadam distribution.",
+        shortDesc: "A diverse variety of naturally grown vegetables cultivated for temple cooking, nutrition, and daily prasadam service.",
+        scientificName: "Mixed Seasonal Cultivars",
+        mainUse: "Temple kitchen & prasadam",
+        farmZone: "Vegetable Garden Zone",
+        season: "Seasonal Rotation",
+        growthType: "Mixed Crop Cycles",
+        templeImportance: "Daily Cooking Support",
+        detailedDescription: "Seasonal vegetables form the backbone of fresh daily cooking at ISKCON FARM HOUSE. A variety of greens, roots, gourds, and other vegetables are cultivated in rotation to support nutrition, diversity, and sustainability. These crops help the temple kitchen prepare fresh meals that are offered and then distributed as prasadam.",
+        spiritualSignificance: "Vegetables grown in devotion become part of the sacred food cycle. When cultivated with care and offered first to Krishna, even simple vegetables gain spiritual importance as they support sanctified nourishment for devotees and guests.",
+        templePurpose: [
+          "Used in daily cooking for temple meals",
+          "Supports healthy prasadam preparation",
+          "Maintains diversity and freshness in the sacred kitchen"
+        ],
+        cultivation: [
+          "Soil: Rich compost-enriched garden soil",
+          "Water: Regular moderate watering",
+          "Sunlight: Full to partial sunlight depending on crop",
+          "Season: Rotational based on crop type",
+          "Method: Seasonal planning and natural pest management"
+        ],
+        benefits: [
+          { icon: "fa-carrot", title: "Nutritional Diversity", text: "Supports balanced and wholesome prasadam meals." },
+          { icon: "fa-recycle", title: "Seasonal Sustainability", text: "Crop rotation helps preserve soil health and productivity." },
+          { icon: "fa-utensils", title: "Kitchen Essential", text: "Directly supports everyday temple cooking and free food service." }
+        ],
+        interestingNote: "Seasonal vegetable farming allows the temple kitchen to stay connected to nature’s rhythms while serving fresh, healthy, and spiritually offered meals.",
+        related: ["rice", "flowers", "banana"]
+      },
+
+      flowers: {
+        name: "Deity Flowers",
+        category: "Flowers",
+        image: "https://images.unsplash.com/photo-1592841200221-9f9c88d8b0d5?auto=format&fit=crop&w=1400&q=80",
+        tagline: "Fragrant blossoms grown for garlands, altar decoration, and daily deity seva.",
+        shortDesc: "Beautiful flowers such as marigold, rose, jasmine, and other blossoms are grown for deity worship and sacred decoration.",
+        scientificName: "Mixed Flowering Varieties",
+        mainUse: "Garlands & deity decoration",
+        farmZone: "Flower Seva Garden",
+        season: "Varies by species",
+        growthType: "Mixed Flowering Plants",
+        templeImportance: "Daily Altar Seva",
+        detailedDescription: "Flowers hold a special place in devotional life, and the flower gardens at ISKCON FARM HOUSE are cultivated with the intention of serving the deities through beauty, fragrance, and reverence. Different flowering varieties provide blooms for garlands, altar decoration, and festival use throughout the year.",
+        spiritualSignificance: "Flowers symbolize beauty, purity, and loving offering. In devotional service, offering flowers to the deities is a simple yet deeply meaningful act of bhakti. A flower grown with care and offered with devotion becomes an expression of love for Krishna.",
+        templePurpose: [
+          "Used in daily garlands for the deities",
+          "Supports altar decoration and festival seva",
+          "Enhances the devotional atmosphere of the temple"
+        ],
+        cultivation: [
+          "Soil: Loose, fertile, well-drained soil",
+          "Water: Regular light-to-moderate watering",
+          "Sunlight: Usually full sunlight",
+          "Season: Depends on flower variety",
+          "Method: Pruning, rotation, and natural feeding for blooms"
+        ],
+        benefits: [
+          { icon: "fa-spa", title: "Devotional Beauty", text: "Adds beauty and fragrance to deity worship and temple spaces." },
+          { icon: "fa-heart", title: "Bhakti Expression", text: "Represents love and care in the act of offering." },
+          { icon: "fa-seedling", title: "Garden Vitality", text: "Encourages biodiversity and a vibrant sacred ecosystem." }
+        ],
+        interestingNote: "In devotional life, flowers are often among the simplest and purest offerings, and growing them within the farm makes the seva even more intimate and meaningful.",
+        related: ["tulasi", "coconut", "vegetables"]
+      },
+
+      tulasi: {
+        name: "Tulasi Garden",
+        category: "Sacred Plant",
+        image: "https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=1400&q=80",
+        tagline: "A deeply revered sacred plant central to devotional life and Krishna bhakti.",
+        shortDesc: "Tulasi Maharani is lovingly maintained as a sacred and essential part of devotional farm life, worship, and spiritual practice.",
+        scientificName: "Ocimum tenuiflorum",
+        mainUse: "Worship & devotional service",
+        farmZone: "Tulasi Seva Garden",
+        season: "Perennial in suitable climate",
+        growthType: "Sacred Herbaceous Plant",
+        templeImportance: "Daily Krishna Offering",
+        detailedDescription: "Tulasi is one of the most spiritually significant plants in the devotional tradition. At ISKCON FARM HOUSE, Tulasi is not merely cultivated — she is lovingly cared for as part of daily devotional life. The Tulasi garden becomes a sacred zone of reverence, beauty, and service, supporting worship and inspiring visitors to appreciate the spiritual dimension of nature.",
+        spiritualSignificance: "Tulasi Maharani holds a unique and exalted place in Krishna bhakti. Tulasi leaves are offered to Lord Krishna in worship, and caring for Tulasi is itself a devotional practice. Her presence sanctifies the environment and reminds devotees that nature can be directly connected to loving service.",
+        templePurpose: [
+          "Tulasi leaves are used in offerings to Krishna",
+          "The plant is worshipped and cared for daily",
+          "The garden serves as a sacred focal point for visitors and devotees"
+        ],
+        cultivation: [
+          "Soil: Light, well-drained fertile soil",
+          "Water: Moderate watering without waterlogging",
+          "Sunlight: Good sunlight with gentle care",
+          "Season: Thrives in warm climates",
+          "Method: Daily devotional care and protected growth"
+        ],
+        benefits: [
+          { icon: "fa-hands-praying", title: "Highest Devotional Relevance", text: "Tulasi is directly connected to Krishna worship and bhakti practices." },
+          { icon: "fa-leaf", title: "Sacred Presence", text: "Creates a spiritually uplifting and sanctified atmosphere." },
+          { icon: "fa-book-open-reader", title: "Educational Value", text: "Helps visitors understand sacred botany and devotional ecology." }
+        ],
+        interestingNote: "Among all plants in the farm, Tulasi holds a uniquely sacred position because she is personally revered in devotional practice and directly connected to daily worship of Lord Krishna.",
+        related: ["flowers", "banana", "coconut"]
+      }
+    };
+
+    const plantParam = new URLSearchParams(window.location.search).get("plant") || "rice";
+    const currentPlant = plantData[plantParam] || plantData.rice;
+
+    // Fill hero
+    document.getElementById("plantImage").src = currentPlant.image;
+    document.getElementById("plantImage").alt = currentPlant.name;
+    document.getElementById("plantCategory").textContent = currentPlant.category;
+    document.getElementById("plantName").innerHTML = `${currentPlant.name.split(' ')[0]} <span>${currentPlant.name.split(' ').slice(1).join(' ')}</span>`;
+    document.getElementById("plantTagline").textContent = currentPlant.tagline;
+    document.getElementById("plantShortDesc").textContent = currentPlant.shortDesc;
+
+    // Fill quick info
+    document.getElementById("scientificName").textContent = currentPlant.scientificName;
+    document.getElementById("mainUse").textContent = currentPlant.mainUse;
+    document.getElementById("farmZone").textContent = currentPlant.farmZone;
+    document.getElementById("season").textContent = currentPlant.season;
+    document.getElementById("growthType").textContent = currentPlant.growthType;
+    document.getElementById("templeImportance").textContent = currentPlant.templeImportance;
+
+    // Fill content
+    document.getElementById("detailedDescription").textContent = currentPlant.detailedDescription;
+    document.getElementById("spiritualSignificance").textContent = currentPlant.spiritualSignificance;
+    document.title = `${currentPlant.name} | ISKCON FARM HOUSE`;
+
+    // Fill temple purpose list
+    const templePurposeList = document.getElementById("templePurposeList");
+    templePurposeList.innerHTML = currentPlant.templePurpose.map(item => `
+      <li><i class="fa-solid fa-circle-check"></i><span>${item}</span></li>
+    `).join("");
+
+    // Fill cultivation list
+    const cultivationList = document.getElementById("cultivationList");
+    cultivationList.innerHTML = currentPlant.cultivation.map(item => `
+      <li><i class="fa-solid fa-seedling"></i><span>${item}</span></li>
+    `).join("");
+
+    // Fill benefits
+    const benefitsGrid = document.getElementById("benefitsGrid");
+    benefitsGrid.innerHTML = currentPlant.benefits.map(item => `
+      <div class="card benefit-card">
+        <div class="benefit-icon"><i class="fa-solid ${item.icon}"></i></div>
+        <h4>${item.title}</h4>
+        <p>${item.text}</p>
+      </div>
+    `).join("");
+
+    // Interesting note
+    document.getElementById("interestingNote").textContent = currentPlant.interestingNote;
+
+    // Related plants
+    const relatedGrid = document.getElementById("relatedGrid");
+    relatedGrid.innerHTML = currentPlant.related.map(key => {
+      const plant = plantData[key];
+      return `
+        <a href="productdetail.html?plant=${key}" class="card related-card">
+          <div class="related-image">
+            <img src="${plant.image}" alt="${plant.name}">
+          </div>
+          <div class="related-content">
+            <h4>${plant.name}</h4>
+            <p>${plant.shortDesc}</p>
+          </div>
+        </a>
+      `;
+    }).join("");
+
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
