@@ -1,5 +1,5 @@
-const CACHE_NAME = "iskcon-farm-v3-no-stale";
-const CORE_ASSETS = [
+const CACHE_NAME = "iskcon-farm-v4-final";
+const APP_SHELL = [
   "./",
   "./index.html",
   "./productdetail.html",
@@ -8,15 +8,21 @@ const CORE_ASSETS = [
   "./icon-512.png"
 ];
 
-// Install: cache only core local files
+// Install: cache essential local files only
 self.addEventListener("install", (event) => {
   self.skipWaiting();
   event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
+    caches.open(CACHE_NAME).then(async (cache) => {
+      try {
+        await cache.addAll(APP_SHELL);
+      } catch (error) {
+        console.warn("Some core assets failed to cache during install:", error);
+      }
+    })
   );
 });
 
-// Activate: delete all old caches immediately
+// Activate: remove all old caches and take control immediately
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) =>
@@ -31,44 +37,49 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Fetch strategy:
-// 1. For HTML/navigation => ALWAYS network first (prevents old homepage showing after reload)
-// 2. For same-origin local assets => cache first, then network fallback
-// 3. For external CDN/images => just fetch normally (don't cache old remote stuff)
+// Fetch handling
 self.addEventListener("fetch", (event) => {
   const request = event.request;
+
+  // Only handle GET requests
+  if (request.method !== "GET") return;
+
   const url = new URL(request.url);
 
-  // Handle page navigation / HTML requests with NETWORK FIRST
+  // -----------------------------
+  // 1. HTML / page navigation => NETWORK FIRST
+  // Prevents old index.html showing after reload
+  // -----------------------------
   if (request.mode === "navigate" || request.destination === "document") {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
+          if (networkResponse && networkResponse.status === 200) {
+            const responseClone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put(request, responseClone);
+            });
+          }
           return networkResponse;
         })
-        .catch(() => {
-          return caches.match(request).then((cached) => {
-            return cached || caches.match("./index.html");
-          });
+        .catch(async () => {
+          const cachedPage = await caches.match(request, { ignoreSearch: true });
+          return cachedPage || caches.match("./index.html");
         })
     );
     return;
   }
 
-  // Cache only same-origin local assets
+  // -----------------------------
+  // 2. Same-origin static assets => CACHE FIRST + background update
+  // Best for icons, manifest, local files
+  // -----------------------------
   if (url.origin === self.location.origin) {
     event.respondWith(
-      caches.match(request).then((cached) => {
-        if (cached) return cached;
-
-        return fetch(request)
+      caches.match(request, { ignoreSearch: true }).then((cachedResponse) => {
+        const networkFetch = fetch(request)
           .then((networkResponse) => {
-            // cache successful local GET requests only
-            if (request.method === "GET" && networkResponse && networkResponse.status === 200) {
+            if (networkResponse && networkResponse.status === 200) {
               const responseClone = networkResponse.clone();
               caches.open(CACHE_NAME).then((cache) => {
                 cache.put(request, responseClone);
@@ -76,12 +87,25 @@ self.addEventListener("fetch", (event) => {
             }
             return networkResponse;
           })
-          .catch(() => cached);
+          .catch(() => cachedResponse);
+
+        // Return cached immediately if available, otherwise wait for network
+        return cachedResponse || networkFetch;
       })
     );
     return;
   }
 
-  // External resources (Unsplash, Fonts, CDN) => no forced caching
-  event.respondWith(fetch(request));
+  // -----------------------------
+  // 3. External resources (Unsplash, Google Fonts, CDN)
+  // Don't cache them to avoid stale/old external content
+  // -----------------------------
+  event.respondWith(
+    fetch(request).catch(() => {
+      // Optional graceful fallback for failed external image requests
+      if (request.destination === "image") {
+        return new Response("", { status: 204 });
+      }
+    })
+  );
 });
