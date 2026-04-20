@@ -4,1222 +4,768 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ISKCON FARM HOUSE | Hare Krishna Nature Farm</title>
+  <meta name="description" content="A sacred 108-acre organic farm dedicated to Krishna seva, temple offerings, and free prasadam distribution." />
+  <meta name="theme-color" content="#0b1f10" />
 
-  <!-- Google Fonts -->
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icon-192.png" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
 
   <style>
     :root{
-      --bg-dark: #07180d;
-      --bg-dark-2: #0d2414;
-      --bg-card: rgba(255,255,255,0.06);
-      --primary: #c9ef47;
-      --primary-dark: #a8d62d;
-      --text-light: #f5f7f2;
-      --text-soft: #d0dacb;
-      --text-muted: #9fb09c;
-      --border: rgba(255,255,255,0.12);
-      --shadow: 0 20px 50px rgba(0,0,0,0.25);
-      --radius: 18px;
-      --transition: all 0.35s ease;
-      --max-width: 1280px;
+      --bg-dark:#07180d;
+      --bg-dark-2:#0d2414;
+      --bg-card:rgba(255,255,255,0.06);
+      --primary:#c9ef47;
+      --primary-dark:#a8d62d;
+      --text-light:#f5f7f2;
+      --text-soft:#d0dacb;
+      --text-muted:#9fb09c;
+      --border:rgba(255,255,255,0.12);
+      --shadow:0 20px 50px rgba(0,0,0,0.25);
+      --radius:18px;
+      --transition:all 0.35s ease;
+      --max-width:1280px;
     }
 
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html{
-      scroll-behavior: smooth;
-    }
-
+    *{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(180deg, #07180d 0%, #0a1f11 40%, #0d2414 100%);
-      color: var(--text-light);
-      overflow-x: hidden;
+      font-family:'Inter',sans-serif;
+      background:linear-gradient(180deg,#07180d 0%,#0a1f11 40%,#0d2414 100%);
+      color:var(--text-light);
+      overflow-x:hidden;
     }
-
-    body::-webkit-scrollbar{
-      width: 10px;
-    }
-
-    body::-webkit-scrollbar-thumb{
-      background: var(--primary);
-      border-radius: 50px;
-    }
-
-    body::-webkit-scrollbar-track{
-      background: #09140c;
-    }
-
-    a{
-      text-decoration: none;
-      color: inherit;
-    }
-
-    ul{
-      list-style: none;
-    }
-
-    img{
-      max-width: 100%;
-      display: block;
-    }
-
-    .container{
-      width: min(92%, var(--max-width));
-      margin: 0 auto;
-    }
-
-    section{
-      padding: 90px 0;
-      position: relative;
-    }
+    body::-webkit-scrollbar{width:10px}
+    body::-webkit-scrollbar-thumb{background:var(--primary);border-radius:50px}
+    body::-webkit-scrollbar-track{background:#09140c}
+    a{text-decoration:none;color:inherit}
+    ul{list-style:none}
+    img{max-width:100%;display:block}
+    .container{width:min(92%,var(--max-width));margin:0 auto}
+    section{padding:90px 0;position:relative}
 
     .section-tag{
-      display: inline-block;
-      padding: 8px 14px;
-      background: rgba(201, 239, 71, 0.12);
-      color: var(--primary);
-      border: 1px solid rgba(201, 239, 71, 0.18);
-      border-radius: 999px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.5px;
-      margin-bottom: 16px;
+      display:inline-block;
+      padding:8px 14px;
+      background:rgba(201,239,71,0.12);
+      color:var(--primary);
+      border:1px solid rgba(201,239,71,0.18);
+      border-radius:999px;
+      font-size:.85rem;
+      font-weight:600;
+      margin-bottom:16px;
     }
 
     .section-title{
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      font-weight: 800;
-      line-height: 1.15;
-      margin-bottom: 14px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.1;
+      font-weight:800;
+      margin-bottom:16px;
     }
 
-    .section-title span{
-      color: var(--primary);
-    }
+    .section-title span{color:var(--primary)}
 
     .section-subtitle{
-      color: var(--text-soft);
-      max-width: 760px;
-      line-height: 1.7;
-      font-size: 1rem;
+      max-width:760px;
+      color:var(--text-soft);
+      line-height:1.8;
+      font-size:1rem;
+      margin-bottom:34px;
     }
 
     .btn{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 15px 26px;
-      border-radius: 14px;
-      font-weight: 700;
-      font-size: 0.98rem;
-      border: 1px solid transparent;
-      transition: var(--transition);
-      cursor: pointer;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:14px 24px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:.96rem;
+      border:1px solid transparent;
+      transition:var(--transition);
+      cursor:pointer;
     }
 
     .btn-primary{
-      background: var(--primary);
-      color: #122006;
-      box-shadow: 0 12px 30px rgba(201, 239, 71, 0.18);
+      background:var(--primary);
+      color:#122006;
+      box-shadow:0 12px 30px rgba(201,239,71,0.18);
     }
 
     .btn-primary:hover{
-      transform: translateY(-4px);
-      background: var(--primary-dark);
-      box-shadow: 0 18px 35px rgba(201, 239, 71, 0.25);
+      transform:translateY(-4px);
+      background:var(--primary-dark);
     }
 
     .btn-outline{
-      border: 1px solid rgba(255,255,255,0.22);
-      color: var(--text-light);
-      background: rgba(255,255,255,0.04);
-      backdrop-filter: blur(10px);
+      border:1px solid rgba(255,255,255,0.22);
+      color:var(--text-light);
+      background:rgba(255,255,255,0.04);
+      backdrop-filter:blur(10px);
     }
 
     .btn-outline:hover{
-      transform: translateY(-4px);
-      border-color: var(--primary);
-      color: var(--primary);
-      background: rgba(201, 239, 71, 0.05);
-    }
-
-    .grid{
-      display: grid;
-      gap: 24px;
+      transform:translateY(-4px);
+      border-color:var(--primary);
+      color:var(--primary);
+      background:rgba(201,239,71,0.05);
     }
 
     .card{
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      transition: var(--transition);
+      background:var(--bg-card);
+      border:1px solid var(--border);
+      backdrop-filter:blur(14px);
+      -webkit-backdrop-filter:blur(14px);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
     }
 
-    .card:hover{
-      transform: translateY(-8px);
-      border-color: rgba(201, 239, 71, 0.22);
-    }
-
-    /* Topbar */
     .topbar{
-      background: #0a0f0c;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      padding: 10px 0;
-      font-size: 0.92rem;
-      color: var(--text-soft);
-      position: relative;
-      z-index: 1000;
+      background:#0a0f0c;
+      border-bottom:1px solid rgba(255,255,255,0.05);
+      padding:10px 0;
+      font-size:.92rem;
+      color:var(--text-soft);
+      position:relative;
+      z-index:1000;
     }
 
     .topbar-wrap{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
     }
 
-    .topbar-left,
-    .topbar-right{
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      flex-wrap: wrap;
+    .topbar-left,.topbar-right{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      flex-wrap:wrap;
     }
 
     .topbar i{
-      color: var(--primary);
-      margin-right: 8px;
+      color:var(--primary);
+      margin-right:8px;
     }
 
-    /* Navbar */
     header{
-      position: fixed;
-      top: 43px;
-      left: 0;
-      width: 100%;
-      z-index: 999;
-      transition: var(--transition);
-    }
-
-    header.scrolled{
-      top: 0;
-      background: rgba(7, 24, 13, 0.86);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position:sticky;
+      top:0;
+      z-index:999;
+      background:rgba(7,24,13,0.88);
+      backdrop-filter:blur(14px);
+      border-bottom:1px solid rgba(255,255,255,0.06);
     }
 
     .navbar{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-      gap: 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:18px 0;
+      gap:20px;
     }
 
     .logo{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: white;
-      flex-shrink: 0;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      font-family:'Poppins',sans-serif;
+      font-weight:800;
+      font-size:1.1rem;
+      color:white;
     }
 
     .logo-icon{
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, #e5ff7a, #9fc922 70%);
-      display: grid;
-      place-items: center;
-      color: #17320c;
-      box-shadow: 0 8px 25px rgba(201, 239, 71, 0.25);
-      font-size: 1.2rem;
+      width:44px;
+      height:44px;
+      border-radius:50%;
+      background:radial-gradient(circle at 30% 30%, #e5ff7a, #9fc922 70%);
+      display:grid;
+      place-items:center;
+      color:#17320c;
+      box-shadow:0 8px 25px rgba(201,239,71,0.25);
+      font-size:1.2rem;
     }
 
-    .logo span{
-      color: var(--primary);
-    }
+    .logo span{color:var(--primary)}
 
     .nav-links{
-      display: flex;
-      align-items: center;
-      gap: 28px;
+      display:flex;
+      align-items:center;
+      gap:22px;
+      font-weight:500;
+      color:var(--text-soft);
     }
 
     .nav-links a{
-      font-weight: 500;
-      color: var(--text-light);
-      position: relative;
-      transition: var(--transition);
+      position:relative;
+      transition:var(--transition);
     }
 
-    .nav-links a::after{
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -6px;
-      width: 0%;
-      height: 2px;
-      background: var(--primary);
-      transition: var(--transition);
-      border-radius: 50px;
+    .nav-links a:hover{color:var(--primary)}
+
+    .nav-toggle{
+      display:none;
+      width:48px;
+      height:48px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,0.08);
+      background:rgba(255,255,255,0.04);
+      color:var(--text-light);
+      font-size:1.1rem;
+      cursor:pointer;
     }
 
-    .nav-links a:hover{
-      color: var(--primary);
-    }
-
-    .nav-links a:hover::after{
-      width: 100%;
-    }
-
-    .nav-cta{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .menu-toggle{
-      display: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: white;
-      font-size: 1.15rem;
-      cursor: pointer;
-    }
-
-    /* Hero */
     .hero{
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      position: relative;
-      overflow: hidden;
-      padding-top: 150px;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
       background:
-        linear-gradient(rgba(5, 18, 10, 0.70), rgba(5, 18, 10, 0.75)),
-        url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+        linear-gradient(90deg, rgba(7,24,13,0.94) 0%, rgba(7,24,13,0.84) 35%, rgba(7,24,13,0.58) 100%),
+        url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
     }
 
     .hero::before{
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(201, 239, 71, 0.10), transparent 28%),
-        radial-gradient(circle at 80% 40%, rgba(201, 239, 71, 0.08), transparent 25%),
-        radial-gradient(circle at 50% 100%, rgba(255,255,255,0.03), transparent 30%);
-      pointer-events: none;
+      content:"";
+      position:absolute;
+      inset:0;
+      background:radial-gradient(circle at 80% 20%, rgba(201,239,71,0.12), transparent 35%);
+      pointer-events:none;
     }
 
     .hero-wrap{
-      position: relative;
-      z-index: 2;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 40px;
-      align-items: center;
+      display:grid;
+      grid-template-columns:1.15fr .85fr;
+      gap:32px;
+      align-items:center;
+      width:100%;
+    }
+
+    .hero-content{
+      padding:120px 0 80px;
+      position:relative;
+      z-index:2;
     }
 
     .hero-badge{
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 16px;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 999px;
-      color: var(--primary);
-      font-weight: 600;
-      margin-bottom: 20px;
-      backdrop-filter: blur(10px);
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:999px;
+      background:rgba(201,239,71,0.12);
+      border:1px solid rgba(201,239,71,0.16);
+      color:var(--primary);
+      font-weight:700;
+      margin-bottom:22px;
     }
 
     .hero-title{
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2.6rem, 6vw, 5.8rem);
-      line-height: 1.03;
-      font-weight: 800;
-      margin-bottom: 18px;
-      letter-spacing: -1px;
+      font-family:'Poppins',sans-serif;
+      font-size:clamp(2.4rem, 5vw, 5.5rem);
+      line-height:1.02;
+      font-weight:800;
+      margin-bottom:20px;
+      max-width:780px;
     }
 
-    .hero-title .highlight{
-      color: var(--primary);
+    .hero-title span{color:var(--primary)}
+
+    .hero-subtitle{
+      max-width:720px;
+      color:var(--text-soft);
+      line-height:1.85;
+      font-size:1.06rem;
+      margin-bottom:30px;
     }
 
-    .hero-desc{
-      max-width: 700px;
-      color: var(--text-soft);
-      font-size: 1.06rem;
-      line-height: 1.8;
-      margin-bottom: 30px;
+    .hero-actions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-bottom:28px;
     }
 
-    .hero-buttons{
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 38px;
+    .hero-mini{
+      display:flex;
+      flex-wrap:wrap;
+      gap:20px;
+      color:var(--text-soft);
+      font-size:.96rem;
     }
 
-    .hero-stats{
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      max-width: 700px;
+    .hero-mini span{
+      display:flex;
+      align-items:center;
+      gap:8px;
     }
 
-    .stat-card{
-      padding: 20px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(12px);
-    }
-
-    .stat-card h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 2rem;
-      color: var(--primary);
-      margin-bottom: 6px;
-    }
-
-    .stat-card p{
-      color: var(--text-soft);
-      font-size: 0.95rem;
-    }
+    .hero-mini i{color:var(--primary)}
 
     .hero-side{
-      display: flex;
-      justify-content: flex-end;
+      display:flex;
+      justify-content:flex-end;
+      align-items:flex-end;
+      position:relative;
+      z-index:2;
     }
 
-    .floating-panel{
-      width: 100%;
-      max-width: 430px;
-      padding: 26px;
-      border-radius: 24px;
-      background: rgba(9, 25, 14, 0.55);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 25px 60px rgba(0,0,0,0.28);
-      animation: floaty 4s ease-in-out infinite;
+    .floating-card{
+      padding:26px;
+      max-width:360px;
     }
 
-    @keyframes floaty{
-      0%,100%{ transform: translateY(0); }
-      50%{ transform: translateY(-10px); }
+    .floating-card h3{
+      font-family:'Poppins',sans-serif;
+      font-size:1.35rem;
+      margin-bottom:12px;
     }
 
-    .panel-top{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 18px;
+    .floating-card p{
+      color:var(--text-soft);
+      line-height:1.8;
+      margin-bottom:18px;
     }
 
-    .panel-title{
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      font-weight: 700;
+    .floating-list{
+      display:grid;
+      gap:12px;
     }
 
-    .panel-badge{
-      padding: 7px 12px;
-      background: rgba(201, 239, 71, 0.12);
-      color: var(--primary);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .floating-list li{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      color:var(--text-light);
     }
 
-    .mini-list{
-      display: grid;
-      gap: 14px;
-      margin-top: 18px;
-    }
-
-    .mini-item{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 14px;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .mini-icon{
-      width: 46px;
-      height: 46px;
-      border-radius: 14px;
-      background: rgba(201, 239, 71, 0.14);
-      display: grid;
-      place-items: center;
-      color: var(--primary);
-      font-size: 1.1rem;
-      flex-shrink: 0;
-    }
-
-    .mini-text h4{
-      font-size: 1rem;
-      margin-bottom: 4px;
-    }
-
-    .mini-text p{
-      color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    /* Features */
-    .features-grid{
-      grid-template-columns: repeat(4, 1fr);
-      margin-top: 40px;
-    }
-
-    .feature-card{
-      padding: 28px;
-    }
-
-    .feature-icon{
-      width: 60px;
-      height: 60px;
-      border-radius: 18px;
-      display: grid;
-      place-items: center;
-      background: rgba(201, 239, 71, 0.12);
-      color: var(--primary);
-      font-size: 1.35rem;
-      margin-bottom: 18px;
-    }
-
-    .feature-card h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      margin-bottom: 10px;
-    }
-
-    .feature-card p{
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 0.96rem;
-    }
-
-    /* About */
-    .about-wrap{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 36px;
-      align-items: center;
-    }
-
-    .about-images{
-      position: relative;
-      min-height: 580px;
-    }
-
-    .about-main-img,
-    .about-float-img{
-      position: absolute;
-      border-radius: 24px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .about-main-img{
-      inset: 0 80px 60px 0;
-    }
-
-    .about-float-img{
-      width: 52%;
-      right: 0;
-      bottom: 0;
-      height: 250px;
-    }
-
-    .about-main-img img,
-    .about-float-img img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .experience-badge{
-      position: absolute;
-      left: 24px;
-      bottom: 24px;
-      background: rgba(9, 25, 14, 0.85);
-      border: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      padding: 18px 22px;
-      border-radius: 18px;
-      z-index: 5;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-
-    .experience-badge h3{
-      font-family: 'Poppins', sans-serif;
-      color: var(--primary);
-      font-size: 1.8rem;
-      margin-bottom: 4px;
-    }
-
-    .about-content p{
-      color: var(--text-soft);
-      line-height: 1.8;
-      margin: 18px 0;
-    }
-
-    .about-list{
-      display: grid;
-      gap: 12px;
-      margin: 24px 0 28px;
-    }
-
-    .about-list li{
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: var(--text-light);
-      font-weight: 500;
-    }
-
-    .about-list i{
-      color: var(--primary);
-    }
-
-    /* Plants */
-    .plants-grid{
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 40px;
-    }
-
-    .plant-card{
-      overflow: hidden;
-    }
-
-    .plant-image{
-      height: 230px;
-      overflow: hidden;
-      position: relative;
-    }
-
-    .plant-image img{
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .plant-card:hover .plant-image img{
-      transform: scale(1.08);
-    }
-
-    .plant-badge{
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      padding: 8px 12px;
-      background: rgba(9, 25, 14, 0.8);
-      color: var(--primary);
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .plant-content{
-      padding: 22px;
-    }
-
-    .plant-content h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      margin-bottom: 8px;
-    }
-
-    .plant-content p{
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 0.95rem;
-      margin-bottom: 12px;
-    }
-
-    .plant-purpose{
-      font-size: 0.9rem;
-      color: var(--primary);
-      font-weight: 600;
-    }
-
-    /* Temple Service */
-    .services-grid{
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 40px;
-    }
-
-    .service-card{
-      padding: 30px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before{
-      content: "";
-      position: absolute;
-      top: -40px;
-      right: -40px;
-      width: 120px;
-      height: 120px;
-      background: radial-gradient(circle, rgba(201,239,71,0.12), transparent 70%);
-      pointer-events: none;
-    }
-
-    .service-card h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.2rem;
-      margin: 16px 0 10px;
-    }
-
-    .service-card p{
-      color: var(--text-soft);
-      line-height: 1.75;
-      margin-bottom: 18px;
-    }
-
-    /* Process */
-    .process-grid{
-      grid-template-columns: repeat(5, 1fr);
-      margin-top: 40px;
-      position: relative;
-    }
-
-    .process-card{
-      padding: 28px;
-      text-align: center;
-      position: relative;
-    }
-
-    .process-number{
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1.2rem;
-      color: #17320c;
-      background: var(--primary);
-      box-shadow: 0 12px 30px rgba(201, 239, 71, 0.18);
-    }
-
-    .process-card h3{
-      font-family: 'Poppins', sans-serif;
-      font-size: 1.05rem;
-      margin-bottom: 10px;
-    }
-
-    .process-card p{
-      color: var(--text-soft);
-      line-height: 1.7;
-      font-size: 0.93rem;
-    }
-
-    /* Testimonials */
-    .testimonials-grid{
-      grid-template-columns: repeat(3, 1fr);
-      margin-top: 40px;
-    }
-
-    .testimonial-card{
-      padding: 28px;
-    }
-
-    .stars{
-      display: flex;
-      gap: 5px;
-      color: #ffd34d;
-      margin-bottom: 16px;
-    }
-
-    .testimonial-card p{
-      color: var(--text-soft);
-      line-height: 1.8;
-      font-size: 0.96rem;
-      margin-bottom: 20px;
-    }
-
-    .client{
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-
-    .client-avatar{
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), #8db81c);
-      display: grid;
-      place-items: center;
-      color: #17320c;
-      font-weight: 800;
-      font-family: 'Poppins', sans-serif;
-    }
-
-    .client h4{
-      font-size: 1rem;
-      margin-bottom: 3px;
-    }
-
-    .client span{
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
-
-    /* CTA */
-    .cta{
-      padding: 0 0 90px;
-    }
-
-    .cta-box{
-      padding: 50px;
-      border-radius: 28px;
-      background:
-        linear-gradient(135deg, rgba(201,239,71,0.08), rgba(255,255,255,0.03)),
-        rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
-      backdrop-filter: blur(12px);
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 30px;
-      align-items: center;
-      box-shadow: var(--shadow);
-    }
-
-    .cta h2{
-      font-family: 'Poppins', sans-serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
-    .cta p{
-      color: var(--text-soft);
-      line-height: 1.8;
-    }
+    .floating-list i{color:var(--primary)}
 
-    .cta-actions{
-      display: flex;
-      justify-content: flex-end;
-      gap: 14px;
-      flex-wrap: wrap;
+    .grid{
+      display:grid;
+      gap:24px;
     }
 
-    /* Contact */
-    .contact-wrap{
-      display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
-      gap: 28px;
-      margin-top: 40px;
+    .grid-3{
+      grid-template-columns:repeat(3,1fr);
     }
 
-    .contact-info{
-      padding: 30px;
+    .grid-4{
+      grid-template-columns:repeat(4,1fr);
     }
 
-    .info-list{
-      display: grid;
-      gap: 18px;
-      margin-top: 24px;
+    .info-card{
+      padding:28px;
+      transition:var(--transition);
     }
 
-    .info-item{
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
+    .info-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,239,71,0.22);
     }
 
     .info-icon{
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      background: rgba(201, 239, 71, 0.12);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
+      width:58px;
+      height:58px;
+      border-radius:18px;
+      display:grid;
+      place-items:center;
+      background:rgba(201,239,71,0.12);
+      color:var(--primary);
+      font-size:1.25rem;
+      margin-bottom:16px;
     }
 
-    .info-text h4{
-      margin-bottom: 6px;
-      font-family: 'Poppins', sans-serif;
+    .info-card h3{
+      font-family:'Poppins',sans-serif;
+      font-size:1.15rem;
+      margin-bottom:10px;
     }
 
-    .info-text p{
-      color: var(--text-soft);
-      line-height: 1.7;
+    .info-card p{
+      color:var(--text-soft);
+      line-height:1.75;
+      font-size:.96rem;
     }
 
-    .contact-form{
-      padding: 30px;
+    .stats{
+      padding-top:20px;
     }
 
-    .form-grid{
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
+    .stat-card{
+      padding:28px;
+      text-align:center;
     }
 
-    .input-group{
-      margin-bottom: 16px;
+    .stat-number{
+      font-family:'Poppins',sans-serif;
+      font-size:2rem;
+      font-weight:800;
+      color:var(--primary);
+      margin-bottom:8px;
     }
 
-    .input-group.full{
-      grid-column: span 2;
+    .stat-label{
+      color:var(--text-soft);
+      line-height:1.6;
     }
 
-    input, textarea{
-      width: 100%;
-      padding: 15px 16px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.04);
-      color: white;
-      outline: none;
-      font-family: 'Inter', sans-serif;
-      transition: var(--transition);
+    .about-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:30px;
+      align-items:center;
     }
 
-    input::placeholder, textarea::placeholder{
-      color: #b8c2b5;
+    .about-image{
+      position:relative;
+      min-height:500px;
+      border-radius:26px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
     }
 
-    input:focus, textarea:focus{
-      border-color: rgba(201, 239, 71, 0.45);
-      box-shadow: 0 0 0 4px rgba(201, 239, 71, 0.08);
+    .about-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
     }
 
-    textarea{
-      resize: vertical;
-      min-height: 150px;
+    .experience-badge{
+      position:absolute;
+      bottom:20px;
+      left:20px;
+      padding:18px 22px;
+      border-radius:18px;
+      background:rgba(7,24,13,0.85);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:var(--shadow);
     }
 
-    /* Footer */
+    .experience-badge strong{
+      display:block;
+      color:var(--primary);
+      font-size:1.4rem;
+      font-family:'Poppins',sans-serif;
+    }
+
+    .about-content p{
+      color:var(--text-soft);
+      line-height:1.9;
+      margin-bottom:16px;
+    }
+
+    .about-list{
+      display:grid;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .about-list li{
+      display:flex;
+      align-items:flex-start;
+      gap:10px;
+      color:var(--text-soft);
+      line-height:1.7;
+    }
+
+    .about-list i{
+      color:var(--primary);
+      margin-top:4px;
+    }
+
+    .plant-card{
+      display:block;
+      cursor:pointer;
+      overflow:hidden;
+      transition:all 0.35s ease;
+    }
+
+    .plant-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,239,71,0.25);
+    }
+
+    .plant-image{
+      height:240px;
+      overflow:hidden;
+    }
+
+    .plant-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform 0.5s ease;
+    }
+
+    .plant-card:hover .plant-image img{
+      transform:scale(1.06);
+    }
+
+    .plant-content{
+      padding:22px;
+    }
+
+    .plant-badge{
+      display:inline-block;
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(201,239,71,0.12);
+      color:var(--primary);
+      font-size:0.78rem;
+      font-weight:700;
+      margin-bottom:12px;
+    }
+
+    .plant-content h3{
+      font-family:'Poppins',sans-serif;
+      font-size:1.2rem;
+      margin-bottom:10px;
+    }
+
+    .plant-content p{
+      color:var(--text-soft);
+      line-height:1.7;
+      font-size:0.95rem;
+      margin-bottom:16px;
+    }
+
+    .plant-link{
+      color:var(--primary);
+      font-weight:700;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    .service-card{
+      padding:28px;
+      transition:var(--transition);
+    }
+
+    .service-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(201,239,71,0.22);
+    }
+
+    .service-card h3{
+      font-family:'Poppins',sans-serif;
+      margin-bottom:12px;
+      font-size:1.15rem;
+    }
+
+    .service-card p{
+      color:var(--text-soft);
+      line-height:1.8;
+      font-size:.96rem;
+    }
+
+    .reflection-card{
+      padding:28px;
+    }
+
+    .reflection-card p{
+      color:var(--text-soft);
+      line-height:1.85;
+      margin-bottom:18px;
+    }
+
+    .reflection-user{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .reflection-avatar{
+      width:54px;
+      height:54px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:rgba(201,239,71,0.12);
+      color:var(--primary);
+      font-weight:800;
+      font-family:'Poppins',sans-serif;
+    }
+
+    .reflection-meta strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .reflection-meta span{
+      color:var(--text-muted);
+      font-size:.92rem;
+    }
+
+    .contact-wrap{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:28px;
+      align-items:stretch;
+    }
+
+    .contact-card{
+      padding:30px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:18px;
+      margin-top:10px;
+    }
+
+    .contact-list li{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      color:var(--text-soft);
+      line-height:1.8;
+    }
+
+    .contact-list i{
+      width:22px;
+      color:var(--primary);
+      margin-top:4px;
+    }
+
+    .map-box{
+      min-height:100%;
+      overflow:hidden;
+    }
+
+    .map-box iframe{
+      width:100%;
+      min-height:100%;
+      height:100%;
+      border:0;
+      border-radius:var(--radius);
+      filter:grayscale(100%) invert(92%) hue-rotate(45deg) saturate(0.3) brightness(0.9);
+    }
+
     footer{
-      padding: 26px 0;
-      border-top: 1px solid rgba(255,255,255,0.06);
-      background: rgba(0,0,0,0.12);
+      padding:26px 0;
+      border-top:1px solid rgba(255,255,255,0.06);
+      background:rgba(0,0,0,0.12);
     }
 
     .footer-wrap{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
     }
 
     .footer-left{
-      color: var(--text-soft);
+      color:var(--text-soft);
     }
 
     .socials{
-      display: flex;
-      gap: 12px;
+      display:flex;
+      gap:12px;
     }
 
     .socials a{
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: grid;
-      place-items: center;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: var(--text-light);
-      transition: var(--transition);
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:rgba(255,255,255,0.05);
+      border:1px solid rgba(255,255,255,0.08);
+      color:var(--text-light);
+      transition:var(--transition);
     }
 
     .socials a:hover{
-      color: #17320c;
-      background: var(--primary);
-      transform: translateY(-4px);
+      color:#17320c;
+      background:var(--primary);
+      transform:translateY(-4px);
     }
 
-    /* Scroll To Top */
-    .scroll-top{
-      position: fixed;
-      right: 22px;
-      bottom: 22px;
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
-      border: none;
-      background: var(--primary);
-      color: #17320c;
-      font-size: 1.15rem;
-      font-weight: 800;
-      cursor: pointer;
-      box-shadow: 0 12px 30px rgba(201, 239, 71, 0.18);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(20px);
-      transition: var(--transition);
-      z-index: 999;
-    }
-
-    .scroll-top.show{
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    /* Reveal Animation */
     .reveal{
-      opacity: 0;
-      transform: translateY(35px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
+      opacity:0;
+      transform:translateY(30px);
+      transition:opacity .8s ease, transform .8s ease;
     }
 
     .reveal.active{
-      opacity: 1;
-      transform: translateY(0);
+      opacity:1;
+      transform:translateY(0);
     }
 
-    /* Mobile Menu */
-    .mobile-menu{
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: min(85%, 360px);
-      height: 100vh;
-      background: rgba(8, 22, 12, 0.96);
-      backdrop-filter: blur(14px);
-      border-left: 1px solid rgba(255,255,255,0.06);
-      z-index: 1001;
-      padding: 26px;
-      transition: right 0.35s ease;
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-    }
-
-    .mobile-menu.active{
-      right: 0;
-    }
-
-    .mobile-menu-top{
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .mobile-close{
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      border: 1px solid rgba(255,255,255,0.10);
-      background: rgba(255,255,255,0.04);
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-
-    .mobile-links{
-      display: grid;
-      gap: 14px;
-    }
-
-    .mobile-links a{
-      padding: 14px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-      font-weight: 600;
-      transition: var(--transition);
-    }
-
-    .mobile-links a:hover{
-      color: var(--primary);
-      border-color: rgba(201, 239, 71, 0.18);
-    }
-
-    .menu-overlay{
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: var(--transition);
-    }
-
-    .menu-overlay.active{
-      opacity: 1;
-      visibility: visible;
-    }
-
-    @media (max-width: 1200px){
+    @media (max-width: 1100px){
       .hero-wrap,
       .about-wrap,
-      .cta-box,
       .contact-wrap{
-        grid-template-columns: 1fr;
+        grid-template-columns:1fr;
+      }
+
+      .grid-4{
+        grid-template-columns:repeat(2,1fr);
+      }
+
+      .grid-3{
+        grid-template-columns:repeat(2,1fr);
       }
 
       .hero-side{
-        justify-content: flex-start;
-      }
-
-      .features-grid{
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .plants-grid{
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .services-grid{
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .process-grid{
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .testimonials-grid{
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .cta-actions{
-        justify-content: flex-start;
+        justify-content:flex-start;
       }
     }
 
-    @media (max-width: 900px){
-      .nav-links,
-      .nav-cta .btn{
-        display: none;
+    @media (max-width: 860px){
+      .nav-links{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:rgba(7,24,13,0.98);
+        border-bottom:1px solid rgba(255,255,255,0.06);
+        flex-direction:column;
+        align-items:flex-start;
+        padding:18px 4%;
+        display:none;
       }
 
-      .menu-toggle{
-        display: inline-grid;
-        place-items: center;
+      .nav-links.active{
+        display:flex;
       }
 
-      .hero{
-        padding-top: 140px;
-      }
-
-      .hero-stats{
-        grid-template-columns: 1fr;
-      }
-
-      .about-images{
-        min-height: 480px;
-      }
-
-      .contact-wrap{
-        grid-template-columns: 1fr;
-      }
-
-      .form-grid{
-        grid-template-columns: 1fr;
-      }
-
-      .input-group.full{
-        grid-column: span 1;
+      .nav-toggle{
+        display:grid;
+        place-items:center;
       }
     }
 
     @media (max-width: 768px){
-      .topbar{
-        display: none;
-      }
-
-      header{
-        top: 0;
-      }
-
-      .features-grid,
-      .plants-grid,
-      .services-grid,
-      .process-grid,
-      .testimonials-grid{
-        grid-template-columns: 1fr;
-      }
-
-      .hero-title{
-        font-size: clamp(2.2rem, 10vw, 4rem);
-      }
-
-      .hero-buttons{
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .hero-buttons .btn{
-        justify-content: center;
-      }
-
-      .floating-panel{
-        max-width: 100%;
-      }
-
-      .about-images{
-        min-height: 380px;
-      }
-
-      .about-main-img{
-        inset: 0 40px 40px 0;
-      }
-
-      .about-float-img{
-        width: 50%;
-        height: 180px;
-      }
-
-      .cta-box{
-        padding: 34px 24px;
-      }
-
-      .contact-info,
-      .contact-form{
-        padding: 22px;
-      }
-
-      .footer-wrap{
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      section{padding:70px 0}
+      .topbar{display:none}
+      .grid-3,.grid-4{grid-template-columns:1fr}
+      .hero-content{padding:90px 0 60px}
+      .hero-actions{flex-direction:column;align-items:stretch}
+      .hero-actions .btn{justify-content:center}
+      .about-image{min-height:360px}
+      .navbar .btn-primary{display:none}
+      .hero-mini{flex-direction:column;align-items:flex-start;gap:10px}
     }
   </style>
 </head>
@@ -1240,173 +786,261 @@
   </div>
 
   <!-- Header -->
-  <header id="header">
+  <header>
     <div class="container navbar">
-      <a href="#home" class="logo">
+      <a href="index.html" class="logo">
         <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
         Hare Krishna <span>Nature Farm</span>
       </a>
 
-      <nav class="nav-links">
+      <nav class="nav-links" id="navLinks">
         <a href="#home">Home</a>
+        <a href="#mission">Mission</a>
+        <a href="#plants">Plants</a>
+        <a href="#services">Temple Service</a>
         <a href="#about">About</a>
-        <a href="#plants">Plant Collection</a>
-        <a href="#services">Temple Seva</a>
-        <a href="#contact">Visit Us</a>
+        <a href="#contact">Visit</a>
       </nav>
 
-      <div class="nav-cta">
-        <a href="#plants" class="btn btn-primary">Explore Farm</a>
-        <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
-      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+
+      <a href="#plants" class="btn btn-primary">
+        Explore Plants <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
   </header>
-
-  <!-- Mobile Menu -->
-  <div class="menu-overlay" id="menuOverlay"></div>
-  <aside class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-top">
-      <a href="#home" class="logo">
-        <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
-        Hare Krishna <span>Nature Farm</span>
-      </a>
-      <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-
-    <nav class="mobile-links">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#plants">Plant Collection</a>
-      <a href="#services">Temple Seva</a>
-      <a href="#contact">Visit Us</a>
-    </nav>
-
-    <a href="#contact" class="btn btn-primary">Plan a Visit</a>
-  </aside>
 
   <!-- Hero -->
   <section class="hero" id="home">
     <div class="container hero-wrap">
-      <div class="hero-content reveal">
-        <div class="hero-badge">
-          <i class="fa-solid fa-hands-praying"></i>
-          ISKCON FARM HOUSE
+      <div class="hero-content">
+        <div class="hero-badge reveal">
+          <i class="fa-solid fa-leaf"></i>
+          Sacred Agriculture for Krishna Seva
         </div>
 
-        <h1 class="hero-title">
-          <span class="highlight">Sacred Agriculture</span><br>
-          for Krishna Seva
+        <h1 class="hero-title reveal">
+          Nature, Devotion & <span>Sacred Farming</span>
         </h1>
 
-        <p class="hero-desc">
-          A 108-acre spiritual farm dedicated to natural and sustainable cultivation for temple seva,
-          deity worship, and free prasadam distribution. Every grain, fruit, flower, and plant is grown
-          with devotion in service to Lord Krishna and for the benefit of visiting devotees.
+        <p class="hero-subtitle reveal">
+          A 108-acre spiritual farm dedicated to natural and sustainable cultivation for temple seva, deity worship,
+          and free prasadam distribution. Every grain, fruit, flower, and plant is grown with devotion in service to Lord Krishna
+          and for the benefit of visiting devotees.
         </p>
 
-        <div class="hero-buttons">
+        <div class="hero-actions reveal">
           <a href="#plants" class="btn btn-primary">
-            View Plant Collection <i class="fa-solid fa-arrow-right"></i>
+            View Plant Collection <i class="fa-solid fa-seedling"></i>
           </a>
-          <a href="#contact" class="btn btn-outline">
-            Visit the Farm <i class="fa-solid fa-location-dot"></i>
+          <a href="#about" class="btn btn-outline">
+            Learn More <i class="fa-solid fa-circle-info"></i>
           </a>
         </div>
 
-        <div class="hero-stats">
-          <div class="stat-card">
-            <h3 class="counter" data-target="108">0</h3>
-            <p>Acres of Sacred Farm Land</p>
-          </div>
-          <div class="stat-card">
-            <h3 class="counter" data-target="50">0</h3>
-            <p>Plant Varieties Maintained</p>
-          </div>
-          <div class="stat-card">
-            <h3 class="counter" data-target="365">0</h3>
-            <p>Days of Temple Seva Support</p>
-          </div>
+        <div class="hero-mini reveal">
+          <span><i class="fa-solid fa-spa"></i> Temple Offerings</span>
+          <span><i class="fa-solid fa-utensils"></i> Free Prasadam Support</span>
+          <span><i class="fa-solid fa-tree"></i> 108 Acres Sacred Land</span>
         </div>
       </div>
 
       <div class="hero-side reveal">
-        <div class="floating-panel">
-          <div class="panel-top">
-            <h3 class="panel-title">Why This Farm is Special</h3>
-            <span class="panel-badge">Seva</span>
-          </div>
-
-          <div class="mini-list">
-            <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-wheat-awn"></i></div>
-              <div class="mini-text">
-                <h4>Temple Offerings</h4>
-                <p>Grains, fruits, and flowers are lovingly grown for Lord Krishna's daily seva.</p>
-              </div>
-            </div>
-
-            <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-utensils"></i></div>
-              <div class="mini-text">
-                <h4>Free Prasadam</h4>
-                <p>Farm produce supports sanctified meals distributed freely to visitors and devotees.</p>
-              </div>
-            </div>
-
-            <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-leaf"></i></div>
-              <div class="mini-text">
-                <h4>Natural Farming</h4>
-                <p>Sustainable and devotional cultivation in harmony with nature and spiritual life.</p>
-              </div>
-            </div>
-
-            <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-book-open-reader"></i></div>
-              <div class="mini-text">
-                <h4>Plant Education</h4>
-                <p>Visitors can explore plant diversity and learn the purpose of each sacred plant.</p>
-              </div>
-            </div>
-          </div>
+        <div class="card floating-card">
+          <h3>Why Choose This Farm?</h3>
+          <p>
+            This is not a commercial farm. It is a sacred ecosystem where agriculture, sustainability, and devotion
+            come together in the service of Lord Krishna.
+          </p>
+          <ul class="floating-list">
+            <li><i class="fa-solid fa-circle-check"></i> Temple Seva Focus</li>
+            <li><i class="fa-solid fa-circle-check"></i> Natural Cultivation</li>
+            <li><i class="fa-solid fa-circle-check"></i> Deity Flower Support</li>
+            <li><i class="fa-solid fa-circle-check"></i> Free Prasadam Distribution</li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Highlights -->
-  <section id="features">
+  <!-- Mission -->
+  <section id="mission">
     <div class="container">
-      <span class="section-tag reveal">Farm Highlights</span>
-      <h2 class="section-title reveal">A Sacred Space of <span>Nature & Devotion</span></h2>
+      <span class="section-tag reveal">Our Mission</span>
+      <h2 class="section-title reveal">Farming in the Service of <span>Lord Krishna</span></h2>
       <p class="section-subtitle reveal">
-        ISKCON FARM HOUSE is more than a farm — it is a living expression of devotion, sustainability,
-        service, and spiritual ecology rooted in Krishna consciousness.
+        ISKCON FARM HOUSE is a sacred agricultural space where crops, fruits, flowers, herbs, and useful plants are grown not for commerce,
+        but for temple offerings, prasadam preparation, devotional service, and spiritual education.
       </p>
 
-      <div class="grid features-grid">
-        <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-expand"></i></div>
-          <h3>108 Acres</h3>
-          <p>A vast spiritual landscape dedicated to natural farming, temple support, and sacred cultivation.</p>
+      <div class="grid grid-4">
+        <div class="card info-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-hands-praying"></i></div>
+          <h3>Temple Offerings</h3>
+          <p>Fresh produce and flowers are grown for daily offerings to Lord Krishna and for sacred devotional use.</p>
         </div>
 
-        <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-seedling"></i></div>
-          <h3>Plant Diversity</h3>
-          <p>A rich collection of grains, fruits, vegetables, flowers, herbs, and sacred plants across the farm.</p>
+        <div class="card info-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-utensils"></i></div>
+          <h3>Prasadam Support</h3>
+          <p>The farm nourishes the temple kitchen with grains, vegetables, fruits, and ingredients for prasadam distribution.</p>
         </div>
 
-        <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-hands-praying"></i></div>
-          <h3>Temple Seva</h3>
-          <p>Everything grown here is offered in service to Lord Krishna through offerings, cooking, and worship.</p>
+        <div class="card info-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-seedling"></i></div>
+          <h3>Natural Farming</h3>
+          <p>Organic and sustainable methods help preserve the land while producing pure, useful, and devotional harvests.</p>
         </div>
 
-        <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-bowl-food"></i></div>
-          <h3>Free Prasadam</h3>
-          <p>Produce from the farm helps support the preparation and free distribution of sanctified food.</p>
+        <div class="card info-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-book-open-reader"></i></div>
+          <h3>Spiritual Learning</h3>
+          <p>Visitors can understand how agriculture can become a path of seva, simplicity, and Krishna consciousness.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="container">
+      <div class="grid grid-4">
+        <div class="card stat-card reveal">
+          <div class="stat-number">108</div>
+          <div class="stat-label">Acres of Sacred Farm Land</div>
+        </div>
+        <div class="card stat-card reveal">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Potential Plant Varieties & Seasonal Diversity</div>
+        </div>
+        <div class="card stat-card reveal">
+          <div class="stat-number">Daily</div>
+          <div class="stat-label">Temple Seva & Devotional Support</div>
+        </div>
+        <div class="card stat-card reveal">
+          <div class="stat-number">Free</div>
+          <div class="stat-label">Prasadam Distribution for Visitors</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Plants -->
+  <section id="plants">
+    <div class="container">
+      <span class="section-tag reveal">Our Sacred Plant Collection</span>
+      <h2 class="section-title reveal">Plants Grown for <span>Krishna Seva</span></h2>
+      <p class="section-subtitle reveal">
+        Explore the rich diversity of crops, fruits, vegetables, flowers, herbs, and sacred plants grown across our 108-acre farm.
+        Each plant is cultivated with care and serves a meaningful role in temple offerings, prasadam preparation, ecological balance, and spiritual life.
+      </p>
+
+      <div class="grid grid-3">
+
+        <a href="productdetail.html?plant=rice" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=80" alt="Sacred Rice">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Grain</div>
+            <h3>Sacred Rice</h3>
+            <p>A foundational grain cultivated for temple cooking, offerings, and prasadam distribution.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="productdetail.html?plant=banana" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=900&q=80" alt="Banana Grove">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Fruit</div>
+            <h3>Banana Grove</h3>
+            <p>A versatile and nourishing fruit plant used in offerings, prasadam, and traditional farm utility.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="productdetail.html?plant=coconut" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1615485925873-6f4f89cbb6d8?auto=format&fit=crop&w=900&q=80" alt="Coconut Trees">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Sacred Fruit</div>
+            <h3>Coconut Trees</h3>
+            <p>An auspicious and sacred tree valued in offerings, rituals, and temple utility.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="productdetail.html?plant=vegetables" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Seasonal Vegetables">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Vegetables</div>
+            <h3>Seasonal Vegetables</h3>
+            <p>Fresh seasonal produce supporting healthy temple cooking and daily prasadam seva.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="productdetail.html?plant=flowers" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1592841200221-9f9c88d8b0d5?auto=format&fit=crop&w=900&q=80" alt="Deity Flowers">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Flowers</div>
+            <h3>Deity Flowers</h3>
+            <p>Beautiful blossoms grown for garlands, altar decoration, and daily deity seva.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <a href="productdetail.html?plant=tulasi" class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Tulasi Garden">
+          </div>
+          <div class="plant-content">
+            <div class="plant-badge">Sacred Plant</div>
+            <h3>Tulasi Garden</h3>
+            <p>A deeply revered sacred plant central to devotional life and Krishna bhakti.</p>
+            <span class="plant-link">View Details <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Temple Service -->
+  <section id="services">
+    <div class="container">
+      <span class="section-tag reveal">How the Farm Serves the Temple</span>
+      <h2 class="section-title reveal">From Cultivation to <span>Prasadam</span></h2>
+      <p class="section-subtitle reveal">
+        Every stage of farming here supports devotional service — from growing the crops to offering them to Krishna and distributing prasadam to devotees and visitors.
+      </p>
+
+      <div class="grid grid-3">
+        <div class="card service-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-gopuram"></i></div>
+          <h3>Temple Offering Support</h3>
+          <p>Crops, fruits, flowers, and sacred plants are cultivated to support daily deity offerings and devotional worship.</p>
+        </div>
+
+        <div class="card service-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-bowl-food"></i></div>
+          <h3>Prasadam Preparation</h3>
+          <p>Farm produce is used in temple cooking and in the preparation of sanctified meals distributed freely to devotees and guests.</p>
+        </div>
+
+        <div class="card service-card reveal">
+          <div class="info-icon"><i class="fa-solid fa-earth-asia"></i></div>
+          <h3>Sacred Ecology & Learning</h3>
+          <p>The farm demonstrates how natural agriculture, sustainability, and Krishna consciousness can exist together beautifully.</p>
         </div>
       </div>
     </div>
@@ -1415,292 +1049,90 @@
   <!-- About -->
   <section id="about">
     <div class="container about-wrap">
-      <div class="about-images reveal">
-        <div class="about-main-img">
-          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Sacred farm">
-        </div>
-        <div class="about-float-img">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Green nature">
-        </div>
+      <div class="about-image reveal">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Farm view">
         <div class="experience-badge">
-          <h3>108</h3>
-          <p>Acres of Sacred Farm</p>
+          <strong>108 Acres</strong>
+          Sacred Devotional Farming
         </div>
       </div>
 
-      <div class="about-content reveal">
-        <span class="section-tag">About the Farm</span>
-        <h2 class="section-title">Where Agriculture Becomes <span>Seva</span></h2>
-        <p>
-          ISKCON FARM HOUSE is a 108-acre spiritual farm dedicated to the service of Lord Krishna through
-          natural and sustainable agriculture. This is not a commercial farm; rather, it is a sacred space
-          where grains, fruits, vegetables, flowers, herbs, and other plants are cultivated with devotion
-          for temple seva.
-        </p>
-        <p>
-          The produce grown here is used for deity offerings, temple cooking, and free prasadam distribution
-          to devotees and visitors. Every aspect of the farm reflects a harmony between nature, simplicity,
-          sustainability, and Krishna consciousness.
-        </p>
-        <p>
-          Beyond cultivation, the farm also serves as a place of learning and inspiration, where visitors can
-          explore plant diversity, understand the purpose of each plant, and experience how agriculture can be
-          connected with devotion and service.
+      <div class="about-content">
+        <span class="section-tag reveal">About ISKCON FARM HOUSE</span>
+        <h2 class="section-title reveal">A Farm Rooted in <span>Seva & Simplicity</span></h2>
+
+        <p class="reveal">
+          ISKCON FARM HOUSE is a 108-acre spiritual farm dedicated to the service of Lord Krishna through natural and sustainable agriculture.
+          This farm is not a commercial enterprise; rather, it is a sacred space where grains, fruits, vegetables, flowers, herbs, and other plants
+          are cultivated with devotion for temple seva.
         </p>
 
-        <ul class="about-list">
-          <li><i class="fa-solid fa-circle-check"></i> Non-commercial farm dedicated to Krishna seva</li>
-          <li><i class="fa-solid fa-circle-check"></i> Produce used for offerings, temple cooking, and prasadam</li>
-          <li><i class="fa-solid fa-circle-check"></i> Sacred flowers and plants for deity worship</li>
-          <li><i class="fa-solid fa-circle-check"></i> Educational experience for visitors and devotees</li>
+        <p class="reveal">
+          The produce grown here is used for deity offerings, temple cooking, and free prasadam distribution to devotees and visitors.
+          Every aspect of the farm reflects a harmony between nature, simplicity, sustainability, and Krishna consciousness.
+        </p>
+
+        <p class="reveal">
+          Beyond cultivation, the farm also serves as a place of learning and inspiration, where visitors can explore the diversity of sacred and useful plants,
+          understand their purpose, and experience how agriculture can be connected with devotion and service.
+        </p>
+
+        <ul class="about-list reveal">
+          <li><i class="fa-solid fa-circle-check"></i> Devotion-based farming instead of commercial agriculture</li>
+          <li><i class="fa-solid fa-circle-check"></i> Supports temple offerings and free prasadam distribution</li>
+          <li><i class="fa-solid fa-circle-check"></i> Encourages ecological harmony and spiritual education</li>
         </ul>
-
-        <a href="#services" class="btn btn-primary">
-          Explore Temple Seva <i class="fa-solid fa-arrow-right"></i>
-        </a>
       </div>
     </div>
   </section>
 
-  <!-- Plant Collection -->
-  <section id="plants">
-    <div class="container">
-      <span class="section-tag reveal">Our Sacred Plant Collection</span>
-      <h2 class="section-title reveal">Plants Grown with <span>Purpose & Devotion</span></h2>
-      <p class="section-subtitle reveal">
-        Explore a beautiful collection of grains, fruits, flowers, herbs, and sacred plants grown across
-        our 108-acre farm. Each plant supports temple life, prasadam preparation, ecological balance,
-        and spiritual service.
-      </p>
-
-      <div class="grid plants-grid">
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=80" alt="Rice">
-            <span class="plant-badge">Grain</span>
-          </div>
-          <div class="plant-content">
-            <h3>Sacred Rice</h3>
-            <p>Traditionally cultivated rice grown naturally and used in temple cooking and prasadam preparation.</p>
-            <div class="plant-purpose">Purpose: Daily prasadam & temple kitchen support</div>
-          </div>
-        </div>
-
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=900&q=80" alt="Banana">
-            <span class="plant-badge">Fruit</span>
-          </div>
-          <div class="plant-content">
-            <h3>Banana Grove</h3>
-            <p>Banana plants provide nutritious fruits and leaves that can be used in devotional and traditional settings.</p>
-            <div class="plant-purpose">Purpose: Offerings, prasadam, and natural farm utility</div>
-          </div>
-        </div>
-
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1615485925873-6f4f89cbb6d8?auto=format&fit=crop&w=900&q=80" alt="Coconut">
-            <span class="plant-badge">Sacred Fruit</span>
-          </div>
-          <div class="plant-content">
-            <h3>Coconut Trees</h3>
-            <p>Coconut is considered auspicious and useful in temple offerings, cooking, and traditional rituals.</p>
-            <div class="plant-purpose">Purpose: Deity offerings and ceremonial use</div>
-          </div>
-        </div>
-
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Vegetables">
-            <span class="plant-badge">Vegetables</span>
-          </div>
-          <div class="plant-content">
-            <h3>Seasonal Vegetables</h3>
-            <p>A variety of naturally grown vegetables that support healthy cooking for devotees and guests.</p>
-            <div class="plant-purpose">Purpose: Temple cooking and free prasadam distribution</div>
-          </div>
-        </div>
-
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1592841200221-9f9c88d8b0d5?auto=format&fit=crop&w=900&q=80" alt="Flowers">
-            <span class="plant-badge">Flowers</span>
-          </div>
-          <div class="plant-content">
-            <h3>Deity Flowers</h3>
-            <p>Fragrant and colorful flowers such as marigold, rose, and jasmine for garlands and worship.</p>
-            <div class="plant-purpose">Purpose: Daily deity decoration and altar seva</div>
-          </div>
-        </div>
-
-        <div class="card plant-card reveal">
-          <div class="plant-image">
-            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Tulasi">
-            <span class="plant-badge">Sacred Plant</span>
-          </div>
-          <div class="plant-content">
-            <h3>Tulasi Garden</h3>
-            <p>Tulasi Maharani is lovingly maintained as a sacred and central part of devotional farm life.</p>
-            <div class="plant-purpose">Purpose: Worship, spiritual significance, and devotional care</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Temple Seva -->
-  <section id="services">
-    <div class="container">
-      <span class="section-tag reveal">How the Farm Serves the Temple</span>
-      <h2 class="section-title reveal">Temple Seva Through <span>Sacred Cultivation</span></h2>
-      <p class="section-subtitle reveal">
-        Every seed planted here carries a purpose — to nourish devotion, support temple life, and serve
-        visitors through sanctified offerings and prasadam.
-      </p>
-
-      <div class="grid services-grid">
-        <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-gopuram"></i></div>
-          <h3>Temple Offering Support</h3>
-          <p>Grains, fruits, flowers, and sacred plants are cultivated with devotion and offered in the service of Lord Krishna.</p>
-        </div>
-
-        <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-bowl-rice"></i></div>
-          <h3>Prasadam Preparation</h3>
-          <p>Farm produce is used in preparing sanctified meals distributed freely to devotees, visitors, and guests.</p>
-        </div>
-
-        <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
-          <h3>Spiritual Ecology & Learning</h3>
-          <p>The farm inspires visitors to understand how nature, agriculture, sustainability, and devotion can beautifully coexist.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Sacred Journey -->
-  <section id="process">
-    <div class="container">
-      <span class="section-tag reveal">From Field to Prasadam</span>
-      <h2 class="section-title reveal">The Journey of <span>Sacred Service</span></h2>
-      <p class="section-subtitle reveal">
-        A beautiful devotional cycle connects the soil, the harvest, the temple, and the hearts of devotees.
-      </p>
-
-      <div class="grid process-grid">
-        <div class="card process-card reveal">
-          <div class="process-number">01</div>
-          <h3>Natural Cultivation</h3>
-          <p>Seeds are planted and nurtured with care using natural and sustainable farming methods.</p>
-        </div>
-
-        <div class="card process-card reveal">
-          <div class="process-number">02</div>
-          <h3>Harvesting</h3>
-          <p>Produce is harvested at the right time with gratitude and devotion.</p>
-        </div>
-
-        <div class="card process-card reveal">
-          <div class="process-number">03</div>
-          <h3>Offering to Krishna</h3>
-          <p>Selected produce, flowers, and sacred items are offered in temple seva and deity worship.</p>
-        </div>
-
-        <div class="card process-card reveal">
-          <div class="process-number">04</div>
-          <h3>Temple Cooking</h3>
-          <p>The farm's produce is lovingly used in the temple kitchen for prasadam preparation.</p>
-        </div>
-
-        <div class="card process-card reveal">
-          <div class="process-number">05</div>
-          <h3>Free Distribution</h3>
-          <p>Sanctified prasadam is distributed freely to devotees and visitors who come to the temple.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Visitor Reflections -->
-  <section id="testimonials">
+  <!-- Reflections -->
+  <section>
     <div class="container">
       <span class="section-tag reveal">Visitor Reflections</span>
-      <h2 class="section-title reveal">Experiences from <span>Devotees & Visitors</span></h2>
+      <h2 class="section-title reveal">Experiences from <span>Devotees & Guests</span></h2>
       <p class="section-subtitle reveal">
-        The farm leaves a lasting impression on those who visit — not only through nature, but through peace,
-        devotion, and the spirit of service.
+        The farm offers a peaceful experience where nature, devotion, and simplicity come together in a meaningful way.
       </p>
 
-      <div class="grid testimonials-grid">
-        <div class="card testimonial-card reveal">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
+      <div class="grid grid-3">
+        <div class="card reflection-card reveal">
           <p>
-            “Walking through the farm felt deeply peaceful. It was inspiring to see how agriculture can be fully connected with devotion and seva.”
+            Visiting the farm felt deeply peaceful. Seeing agriculture connected directly with temple seva gave me a completely new understanding of devotional living.
           </p>
-          <div class="client">
-            <div class="client-avatar">DM</div>
-            <div>
-              <h4>Devotee Madhava</h4>
-              <span>Temple Visitor</span>
+          <div class="reflection-user">
+            <div class="reflection-avatar">DV</div>
+            <div class="reflection-meta">
+              <strong>Devotee Visitor</strong>
+              <span>Temple Guest</span>
             </div>
           </div>
         </div>
 
-        <div class="card testimonial-card reveal">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
+        <div class="card reflection-card reveal">
           <p>
-            “The idea that the farm produce is used for offerings and free prasadam touched my heart. It is a beautiful expression of Krishna consciousness.”
+            The plant diversity and sacred atmosphere are truly inspiring. It is beautiful to see how food and flowers are grown for Krishna and for serving others.
           </p>
-          <div class="client">
-            <div class="client-avatar">SB</div>
-            <div>
-              <h4>Shyama Bhakta</h4>
-              <span>Visiting Devotee</span>
+          <div class="reflection-user">
+            <div class="reflection-avatar">VG</div>
+            <div class="reflection-meta">
+              <strong>Visiting Guest</strong>
+              <span>Nature Enthusiast</span>
             </div>
           </div>
         </div>
 
-        <div class="card testimonial-card reveal">
-          <div class="stars">
-            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-          </div>
+        <div class="card reflection-card reveal">
           <p>
-            “The farm is not just land — it is a spiritual ecosystem. Seeing the sacred plants and understanding their purpose was unforgettable.”
+            This farm is a living example of simple living and high thinking. It shows how agriculture can become a spiritual offering rather than just production.
           </p>
-          <div class="client">
-            <div class="client-avatar">AK</div>
-            <div>
-              <h4>Ananta Kirtan</h4>
-              <span>Volunteer Guest</span>
+          <div class="reflection-user">
+            <div class="reflection-avatar">SV</div>
+            <div class="reflection-meta">
+              <strong>Seva Volunteer</strong>
+              <span>Farm Supporter</span>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="cta">
-    <div class="container">
-      <div class="cta-box reveal">
-        <div>
-          <h2>Experience Nature, Devotion & Sacred Farming</h2>
-          <p>
-            Visit ISKCON FARM HOUSE and explore how a 108-acre farm can support temple life, sacred offerings,
-            free prasadam, and spiritual education in harmony with nature.
-          </p>
-        </div>
-
-        <div class="cta-actions">
-          <a href="#plants" class="btn btn-primary">Explore Plant Collection</a>
-          <a href="#contact" class="btn btn-outline">Plan Your Visit</a>
         </div>
       </div>
     </div>
@@ -1710,75 +1142,45 @@
   <section id="contact">
     <div class="container">
       <span class="section-tag reveal">Visit the Farm</span>
-      <h2 class="section-title reveal">Contact <span>ISKCON FARM HOUSE</span></h2>
+      <h2 class="section-title reveal">Connect with <span>Hare Krishna Nature Farm</span></h2>
       <p class="section-subtitle reveal">
-        If you wish to visit, learn about the plant collection, or connect regarding the farm and temple seva,
-        feel free to reach out.
+        Experience sacred farming, peaceful surroundings, and the devotional atmosphere of ISKCON FARM HOUSE.
       </p>
 
       <div class="contact-wrap">
-        <div class="card contact-info reveal">
-          <h3 class="panel-title">Farm Contact Information</h3>
-          <div class="info-list">
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
-              <div class="info-text">
-                <h4>Farm Address</h4>
-                <p>Survey No. 411, Taluk, Mahadevpura, Karnataka 571415, India</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
-              <div class="info-text">
-                <h4>Phone Number</h4>
-                <p>+91 9945243930</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
-              <div class="info-text">
-                <h4>Email Address</h4>
-                <p>anirudhsa3101@gmail.com</p>
-              </div>
-            </div>
-
-            <div class="info-item">
-              <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
-              <div class="info-text">
-                <h4>Suggested Visiting Hours</h4>
-                <p>Morning: 7:00 AM – 11:00 AM | Evening: 4:00 PM – 6:30 PM</p>
-              </div>
-            </div>
-          </div>
+        <div class="card contact-card reveal">
+          <h3 style="font-family:'Poppins',sans-serif;font-size:1.4rem;margin-bottom:14px;">Contact Information</h3>
+          <ul class="contact-list">
+            <li>
+              <i class="fa-solid fa-location-dot"></i>
+              <span>Survey No. 411, Taluk, Mahadevpura, Karnataka 571415, India</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-phone"></i>
+              <span>+91 9945243930</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-envelope"></i>
+              <span>anirudhsa3101@gmail.com</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-clock"></i>
+              <span>Suggested Visiting Hours: Mon - Sat, 7:00 AM to 6:00 PM</span>
+            </li>
+            <li>
+              <i class="fa-solid fa-hands-praying"></i>
+              <span>Purpose: Temple seva, sacred agriculture, and devotional education</span>
+            </li>
+          </ul>
         </div>
 
-        <div class="card contact-form reveal">
-          <h3 class="panel-title" style="margin-bottom:18px;">Send a Message</h3>
-          <form id="contactForm">
-            <div class="form-grid">
-              <div class="input-group">
-                <input type="text" id="name" placeholder="Your Name" required>
-              </div>
-
-              <div class="input-group">
-                <input type="email" id="email" placeholder="Your Email" required>
-              </div>
-
-              <div class="input-group full">
-                <input type="text" id="subject" placeholder="Subject" required>
-              </div>
-
-              <div class="input-group full">
-                <textarea id="message" placeholder="Write your message..." required></textarea>
-              </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">
-              Send Message <i class="fa-solid fa-paper-plane"></i>
-            </button>
-          </form>
+        <div class="card contact-card map-box reveal">
+          <iframe
+            src="https://www.google.com/maps?q=Mahadevpura,Karnataka,India&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Farm Location Map">
+          </iframe>
         </div>
       </div>
     </div>
@@ -1800,132 +1202,46 @@
     </div>
   </footer>
 
-  <!-- Scroll Top -->
-  <button class="scroll-top" id="scrollTop">
-    <i class="fa-solid fa-arrow-up"></i>
-  </button>
-
   <script>
-    // Navbar scroll effect
-    const header = document.getElementById('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 40) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+    // Mobile Nav
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    navToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
     });
 
-    // Scroll top button
-    const scrollTopBtn = document.getElementById('scrollTop');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 400) {
-        scrollTopBtn.classList.add('show');
-      } else {
-        scrollTopBtn.classList.remove('show');
-      }
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
     });
 
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-
-    // Mobile menu
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const mobileClose = document.getElementById('mobileClose');
-    const menuOverlay = document.getElementById('menuOverlay');
-    const mobileLinks = document.querySelectorAll('.mobile-links a');
-
-    function openMenu() {
-      mobileMenu.classList.add('active');
-      menuOverlay.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMenu() {
-      mobileMenu.classList.remove('active');
-      menuOverlay.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-
-    menuToggle.addEventListener('click', openMenu);
-    mobileClose.addEventListener('click', closeMenu);
-    menuOverlay.addEventListener('click', closeMenu);
-
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
-
-    // Reveal on scroll
+    // Reveal Animation
     const reveals = document.querySelectorAll('.reveal');
 
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
+    function revealOnScroll(){
+      const triggerBottom = window.innerHeight * 0.9;
+      reveals.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < triggerBottom){
+          el.classList.add('active');
         }
       });
-    }, {
-      threshold: 0.12
-    });
-
-    reveals.forEach(item => revealObserver.observe(item));
-
-    // Counter animation
-    const counters = document.querySelectorAll('.counter');
-    let counterStarted = false;
-
-    function animateCounters() {
-      if (counterStarted) return;
-
-      const heroSection = document.querySelector('.hero-stats');
-      const rect = heroSection.getBoundingClientRect();
-
-      if (rect.top < window.innerHeight && rect.bottom > 0) {
-        counterStarted = true;
-
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          let count = 0;
-          const increment = Math.max(1, Math.ceil(target / 100));
-
-          const updateCounter = () => {
-            count += increment;
-            if (count >= target) {
-              counter.textContent = target + '+';
-            } else {
-              counter.textContent = count;
-              requestAnimationFrame(updateCounter);
-            }
-          };
-
-          updateCounter();
-        });
-      }
     }
 
-    window.addEventListener('scroll', animateCounters);
-    window.addEventListener('load', animateCounters);
-
-    // Contact form demo
-    const contactForm = document.getElementById('contactForm');
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-
-      if (!name) {
-        alert('Please enter your name.');
-        return;
-      }
-
-      alert(`Hare Krishna, ${name}! Your message has been sent successfully. We will get back to you soon.`);
-      contactForm.reset();
-    });
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
 
     // Footer year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Service Worker Registration
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("./sw.js")
+          .then((reg) => console.log("SW registered:", reg.scope))
+          .catch((err) => console.log("SW registration failed:", err));
+      });
+    }
   </script>
 </body>
 </html>
