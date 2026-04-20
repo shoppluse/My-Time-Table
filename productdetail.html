@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plant Details | ISKCON FARM HOUSE</title>
 
-  <!-- PWA / Installable -->
+  <!-- PWA / Installable (kept, but SW disabled temporarily) -->
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#0b1f10" />
   <link rel="icon" href="icon-192.png" />
@@ -79,6 +79,7 @@
       font-weight:800;
       font-size:1.1rem;
       color:white;
+      flex-wrap: wrap;
     }
 
     .logo-icon{
@@ -243,6 +244,7 @@
       display:grid;
       gap:12px;
       margin-top:16px;
+      list-style: none;
     }
 
     .list li{
@@ -424,6 +426,21 @@
   </footer>
 
   <script>
+    // REMOVE OLD SERVICE WORKERS + CACHE (VERY IMPORTANT FIX)
+    (function () {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.getRegistrations().then((registrations) => {
+          registrations.forEach((registration) => registration.unregister());
+        });
+      }
+
+      if ("caches" in window) {
+        caches.keys().then((names) => {
+          names.forEach((name) => caches.delete(name));
+        });
+      }
+    })();
+
     const plants = {
       rice: {
         name: "Sacred Rice",
@@ -656,15 +673,6 @@
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
-
-    // PWA service worker registration
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js")
-          .then((reg) => console.log("SW registered:", reg.scope))
-          .catch((err) => console.log("SW registration failed:", err));
-      });
-    }
   </script>
 </body>
 </html>
