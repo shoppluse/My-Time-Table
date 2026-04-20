@@ -1,6 +1,5 @@
-const CACHE_NAME = "iskcon-farm-v3-clean";
-
-const APP_SHELL = [
+const CACHE_NAME = "iskcon-farm-v3-no-stale";
+const CORE_ASSETS = [
   "./",
   "./index.html",
   "./productdetail.html",
@@ -9,44 +8,39 @@ const APP_SHELL = [
   "./icon-512.png"
 ];
 
-// Install new service worker and cache fresh files
+// Install: cache only core local files
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(APP_SHELL);
-    })
-  );
   self.skipWaiting();
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => cache.addAll(CORE_ASSETS))
+  );
 });
 
-// Activate new service worker and remove ALL old caches
+// Activate: delete all old caches immediately
 self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
+    caches.keys().then((keys) =>
+      Promise.all(
         keys.map((key) => {
           if (key !== CACHE_NAME) {
             return caches.delete(key);
           }
         })
-      );
-    }).then(() => self.clients.claim())
+      )
+    ).then(() => self.clients.claim())
   );
 });
 
 // Fetch strategy:
-// 1. For HTML pages -> network first, fallback to cache
-// 2. For other assets -> cache first, fallback to network
+// 1. For HTML/navigation => ALWAYS network first (prevents old homepage showing after reload)
+// 2. For same-origin local assets => cache first, then network fallback
+// 3. For external CDN/images => just fetch normally (don't cache old remote stuff)
 self.addEventListener("fetch", (event) => {
   const request = event.request;
+  const url = new URL(request.url);
 
-  // Only handle GET requests
-  if (request.method !== "GET") return;
-
-  const acceptHeader = request.headers.get("accept") || "";
-
-  // HTML pages: always try fresh network first
-  if (acceptHeader.includes("text/html")) {
+  // Handle page navigation / HTML requests with NETWORK FIRST
+  if (request.mode === "navigate" || request.destination === "document") {
     event.respondWith(
       fetch(request)
         .then((networkResponse) => {
@@ -57,27 +51,37 @@ self.addEventListener("fetch", (event) => {
           return networkResponse;
         })
         .catch(() => {
-          return caches.match(request).then((cachedResponse) => {
-            return cachedResponse || caches.match("./index.html");
+          return caches.match(request).then((cached) => {
+            return cached || caches.match("./index.html");
           });
         })
     );
     return;
   }
 
-  // Other files: cache first
-  event.respondWith(
-    caches.match(request).then((cachedResponse) => {
-      return (
-        cachedResponse ||
-        fetch(request).then((networkResponse) => {
-          const responseClone = networkResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(request, responseClone);
-          });
-          return networkResponse;
-        })
-      );
-    })
-  );
+  // Cache only same-origin local assets
+  if (url.origin === self.location.origin) {
+    event.respondWith(
+      caches.match(request).then((cached) => {
+        if (cached) return cached;
+
+        return fetch(request)
+          .then((networkResponse) => {
+            // cache successful local GET requests only
+            if (request.method === "GET" && networkResponse && networkResponse.status === 200) {
+              const responseClone = networkResponse.clone();
+              caches.open(CACHE_NAME).then((cache) => {
+                cache.put(request, responseClone);
+              });
+            }
+            return networkResponse;
+          })
+          .catch(() => cached);
+      })
+    );
+    return;
+  }
+
+  // External resources (Unsplash, Fonts, CDN) => no forced caching
+  event.respondWith(fetch(request));
 });
