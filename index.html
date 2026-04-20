@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KrishiAura | Premium Agriculture Website</title>
+  <title>ISKCON FARM HOUSE | Hare Krishna Nature Farm</title>
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -111,7 +111,7 @@
 
     .section-subtitle{
       color: var(--text-soft);
-      max-width: 700px;
+      max-width: 760px;
       line-height: 1.7;
       font-size: 1rem;
     }
@@ -238,7 +238,7 @@
       gap: 12px;
       font-family: 'Poppins', sans-serif;
       font-weight: 800;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: white;
       flex-shrink: 0;
     }
@@ -319,7 +319,7 @@
       overflow: hidden;
       padding-top: 150px;
       background:
-        linear-gradient(rgba(5, 18, 10, 0.68), rgba(5, 18, 10, 0.72)),
+        linear-gradient(rgba(5, 18, 10, 0.70), rgba(5, 18, 10, 0.75)),
         url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
     }
 
@@ -371,7 +371,7 @@
     }
 
     .hero-desc{
-      max-width: 620px;
+      max-width: 700px;
       color: var(--text-soft);
       font-size: 1.06rem;
       line-height: 1.8;
@@ -389,7 +389,7 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 16px;
-      max-width: 620px;
+      max-width: 700px;
     }
 
     .stat-card{
@@ -613,34 +613,34 @@
       color: var(--primary);
     }
 
-    /* Products */
-    .products-grid{
-      grid-template-columns: repeat(4, 1fr);
+    /* Plants */
+    .plants-grid{
+      grid-template-columns: repeat(3, 1fr);
       margin-top: 40px;
     }
 
-    .product-card{
+    .plant-card{
       overflow: hidden;
     }
 
-    .product-image{
+    .plant-image{
       height: 230px;
       overflow: hidden;
       position: relative;
     }
 
-    .product-image img{
+    .plant-image img{
       width: 100%;
       height: 100%;
       object-fit: cover;
       transition: transform 0.6s ease;
     }
 
-    .product-card:hover .product-image img{
+    .plant-card:hover .plant-image img{
       transform: scale(1.08);
     }
 
-    .product-badge{
+    .plant-badge{
       position: absolute;
       top: 14px;
       left: 14px;
@@ -653,37 +653,30 @@
       border: 1px solid rgba(255,255,255,0.08);
     }
 
-    .product-content{
+    .plant-content{
       padding: 22px;
     }
 
-    .product-content h3{
+    .plant-content h3{
       font-family: 'Poppins', sans-serif;
       font-size: 1.2rem;
       margin-bottom: 8px;
     }
 
-    .product-content p{
+    .plant-content p{
       color: var(--text-soft);
       line-height: 1.7;
       font-size: 0.95rem;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
     }
 
-    .product-footer{
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .product-price{
+    .plant-purpose{
+      font-size: 0.9rem;
       color: var(--primary);
-      font-weight: 800;
-      font-size: 1.05rem;
+      font-weight: 600;
     }
 
-    /* Services */
+    /* Temple Service */
     .services-grid{
       grid-template-columns: repeat(3, 1fr);
       margin-top: 40px;
@@ -718,17 +711,9 @@
       margin-bottom: 18px;
     }
 
-    .service-link{
-      color: var(--primary);
-      font-weight: 700;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-    }
-
     /* Process */
     .process-grid{
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       margin-top: 40px;
       position: relative;
     }
@@ -756,14 +741,14 @@
 
     .process-card h3{
       font-family: 'Poppins', sans-serif;
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       margin-bottom: 10px;
     }
 
     .process-card p{
       color: var(--text-soft);
       line-height: 1.7;
-      font-size: 0.95rem;
+      font-size: 0.93rem;
     }
 
     /* Testimonials */
@@ -1102,7 +1087,6 @@
       visibility: visible;
     }
 
-    /* Responsive */
     @media (max-width: 1200px){
       .hero-wrap,
       .about-wrap,
@@ -1119,7 +1103,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .products-grid{
+      .plants-grid{
         grid-template-columns: repeat(2, 1fr);
       }
 
@@ -1186,7 +1170,7 @@
       }
 
       .features-grid,
-      .products-grid,
+      .plants-grid,
       .services-grid,
       .process-grid,
       .testimonials-grid{
@@ -1194,7 +1178,7 @@
       }
 
       .hero-title{
-        font-size: clamp(2.3rem, 10vw, 4rem);
+        font-size: clamp(2.2rem, 10vw, 4rem);
       }
 
       .hero-buttons{
@@ -1245,12 +1229,12 @@
   <div class="topbar">
     <div class="container topbar-wrap">
       <div class="topbar-left">
-        <span><i class="fa-solid fa-leaf"></i> 100% Organic & Sustainable Farming</span>
-        <span><i class="fa-solid fa-location-dot"></i> Serving Freshness From Our Farm</span>
+        <span><i class="fa-solid fa-leaf"></i> 108 Acres of Sacred Organic Farming</span>
+        <span><i class="fa-solid fa-hands-praying"></i> Cultivated for Temple Seva & Free Prasadam</span>
       </div>
       <div class="topbar-right">
-        <span><i class="fa-solid fa-phone"></i> +91 98765 43210</span>
-        <span><i class="fa-solid fa-envelope"></i> hello@krishiaura.com</span>
+        <span><i class="fa-solid fa-phone"></i> +91 9945243930</span>
+        <span><i class="fa-solid fa-envelope"></i> anirudhsa3101@gmail.com</span>
       </div>
     </div>
   </div>
@@ -1260,19 +1244,19 @@
     <div class="container navbar">
       <a href="#home" class="logo">
         <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
-        Krishi<span>Aura</span>
+        Hare Krishna <span>Nature Farm</span>
       </a>
 
       <nav class="nav-links">
         <a href="#home">Home</a>
         <a href="#about">About</a>
-        <a href="#products">Products</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
+        <a href="#plants">Plant Collection</a>
+        <a href="#services">Temple Seva</a>
+        <a href="#contact">Visit Us</a>
       </nav>
 
       <div class="nav-cta">
-        <a href="#products" class="btn btn-primary">Explore Products</a>
+        <a href="#plants" class="btn btn-primary">Explore Farm</a>
         <button class="menu-toggle" id="menuToggle"><i class="fa-solid fa-bars"></i></button>
       </div>
     </div>
@@ -1284,7 +1268,7 @@
     <div class="mobile-menu-top">
       <a href="#home" class="logo">
         <div class="logo-icon"><i class="fa-solid fa-seedling"></i></div>
-        Krishi<span>Aura</span>
+        Hare Krishna <span>Nature Farm</span>
       </a>
       <button class="mobile-close" id="mobileClose"><i class="fa-solid fa-xmark"></i></button>
     </div>
@@ -1292,12 +1276,12 @@
     <nav class="mobile-links">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#plants">Plant Collection</a>
+      <a href="#services">Temple Seva</a>
+      <a href="#contact">Visit Us</a>
     </nav>
 
-    <a href="#contact" class="btn btn-primary">Get In Touch</a>
+    <a href="#contact" class="btn btn-primary">Plan a Visit</a>
   </aside>
 
   <!-- Hero -->
@@ -1305,41 +1289,42 @@
     <div class="container hero-wrap">
       <div class="hero-content reveal">
         <div class="hero-badge">
-          <i class="fa-solid fa-sun-plant-wilt"></i>
-          Premium Organic Agriculture
+          <i class="fa-solid fa-hands-praying"></i>
+          ISKCON FARM HOUSE
         </div>
 
         <h1 class="hero-title">
-          <span class="highlight">Fresh Agriculture</span> &<br>
-          Organic Farm Products
+          <span class="highlight">Sacred Agriculture</span><br>
+          for Krishna Seva
         </h1>
 
         <p class="hero-desc">
-          We grow premium quality crops with sustainable farming methods, delivering farm-fresh produce,
-          natural nutrition, and eco-conscious agriculture for healthier communities and a greener future.
+          A 108-acre spiritual farm dedicated to natural and sustainable cultivation for temple seva,
+          deity worship, and free prasadam distribution. Every grain, fruit, flower, and plant is grown
+          with devotion in service to Lord Krishna and for the benefit of visiting devotees.
         </p>
 
         <div class="hero-buttons">
-          <a href="#products" class="btn btn-primary">
-            Browse Products <i class="fa-solid fa-arrow-right"></i>
+          <a href="#plants" class="btn btn-primary">
+            View Plant Collection <i class="fa-solid fa-arrow-right"></i>
           </a>
           <a href="#contact" class="btn btn-outline">
-            Contact Us <i class="fa-solid fa-phone"></i>
+            Visit the Farm <i class="fa-solid fa-location-dot"></i>
           </a>
         </div>
 
         <div class="hero-stats">
           <div class="stat-card">
-            <h3 class="counter" data-target="15">0</h3>
-            <p>Years of Farming Excellence</p>
+            <h3 class="counter" data-target="108">0</h3>
+            <p>Acres of Sacred Farm Land</p>
           </div>
           <div class="stat-card">
-            <h3 class="counter" data-target="500">0</h3>
-            <p>Happy Customers Served</p>
+            <h3 class="counter" data-target="50">0</h3>
+            <p>Plant Varieties Maintained</p>
           </div>
           <div class="stat-card">
-            <h3 class="counter" data-target="120">0</h3>
-            <p>Acres of Organic Land</p>
+            <h3 class="counter" data-target="365">0</h3>
+            <p>Days of Temple Seva Support</p>
           </div>
         </div>
       </div>
@@ -1347,40 +1332,40 @@
       <div class="hero-side reveal">
         <div class="floating-panel">
           <div class="panel-top">
-            <h3 class="panel-title">Why Choose KrishiAura?</h3>
-            <span class="panel-badge">Natural</span>
+            <h3 class="panel-title">Why This Farm is Special</h3>
+            <span class="panel-badge">Seva</span>
           </div>
 
           <div class="mini-list">
             <div class="mini-item">
               <div class="mini-icon"><i class="fa-solid fa-wheat-awn"></i></div>
               <div class="mini-text">
-                <h4>Fresh Harvest</h4>
-                <p>Directly sourced from our fields with premium quality control.</p>
+                <h4>Temple Offerings</h4>
+                <p>Grains, fruits, and flowers are lovingly grown for Lord Krishna's daily seva.</p>
               </div>
             </div>
 
             <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-recycle"></i></div>
+              <div class="mini-icon"><i class="fa-solid fa-utensils"></i></div>
               <div class="mini-text">
-                <h4>Eco Friendly</h4>
-                <p>Sustainable and responsible farming methods for better tomorrow.</p>
+                <h4>Free Prasadam</h4>
+                <p>Farm produce supports sanctified meals distributed freely to visitors and devotees.</p>
               </div>
             </div>
 
             <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              <div class="mini-icon"><i class="fa-solid fa-leaf"></i></div>
               <div class="mini-text">
-                <h4>Fast Delivery</h4>
-                <p>Farm-to-home freshness with safe packing and reliable delivery.</p>
+                <h4>Natural Farming</h4>
+                <p>Sustainable and devotional cultivation in harmony with nature and spiritual life.</p>
               </div>
             </div>
 
             <div class="mini-item">
-              <div class="mini-icon"><i class="fa-solid fa-shield-heart"></i></div>
+              <div class="mini-icon"><i class="fa-solid fa-book-open-reader"></i></div>
               <div class="mini-text">
-                <h4>100% Natural</h4>
-                <p>No harmful chemicals, just healthy and pure agricultural produce.</p>
+                <h4>Plant Education</h4>
+                <p>Visitors can explore plant diversity and learn the purpose of each sacred plant.</p>
               </div>
             </div>
           </div>
@@ -1389,39 +1374,39 @@
     </div>
   </section>
 
-  <!-- Features -->
+  <!-- Highlights -->
   <section id="features">
     <div class="container">
-      <span class="section-tag reveal">Our Strengths</span>
-      <h2 class="section-title reveal">Rooted in Nature, Built for <span>Quality</span></h2>
+      <span class="section-tag reveal">Farm Highlights</span>
+      <h2 class="section-title reveal">A Sacred Space of <span>Nature & Devotion</span></h2>
       <p class="section-subtitle reveal">
-        We combine traditional farming values with modern sustainable practices to deliver healthy,
-        natural, and trustworthy agricultural products.
+        ISKCON FARM HOUSE is more than a farm — it is a living expression of devotion, sustainability,
+        service, and spiritual ecology rooted in Krishna consciousness.
       </p>
 
       <div class="grid features-grid">
         <div class="card feature-card reveal">
+          <div class="feature-icon"><i class="fa-solid fa-expand"></i></div>
+          <h3>108 Acres</h3>
+          <p>A vast spiritual landscape dedicated to natural farming, temple support, and sacred cultivation.</p>
+        </div>
+
+        <div class="card feature-card reveal">
           <div class="feature-icon"><i class="fa-solid fa-seedling"></i></div>
-          <h3>Organic Farming</h3>
-          <p>Pure cultivation methods focused on healthy soil, natural growth, and chemical-free produce.</p>
+          <h3>Plant Diversity</h3>
+          <p>A rich collection of grains, fruits, vegetables, flowers, herbs, and sacred plants across the farm.</p>
         </div>
 
         <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-droplet"></i></div>
-          <h3>Smart Irrigation</h3>
-          <p>Efficient water usage and modern irrigation systems for sustainable crop nourishment.</p>
+          <div class="feature-icon"><i class="fa-solid fa-hands-praying"></i></div>
+          <h3>Temple Seva</h3>
+          <p>Everything grown here is offered in service to Lord Krishna through offerings, cooking, and worship.</p>
         </div>
 
         <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-sun"></i></div>
-          <h3>Fresh Harvest</h3>
-          <p>Harvested at the right time to ensure freshness, nutrition, and authentic farm taste.</p>
-        </div>
-
-        <div class="card feature-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-truck"></i></div>
-          <h3>Direct Delivery</h3>
-          <p>From our farm to your doorstep with safe packaging, fast delivery, and premium quality.</p>
+          <div class="feature-icon"><i class="fa-solid fa-bowl-food"></i></div>
+          <h3>Free Prasadam</h3>
+          <p>Produce from the farm helps support the preparation and free distribution of sanctified food.</p>
         </div>
       </div>
     </div>
@@ -1432,195 +1417,221 @@
     <div class="container about-wrap">
       <div class="about-images reveal">
         <div class="about-main-img">
-          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Organic farming">
+          <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&q=80" alt="Sacred farm">
         </div>
         <div class="about-float-img">
-          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Fresh vegetables">
+          <img src="https://images.unsplash.com/photo-1501004318641-b39e6451bec6?auto=format&fit=crop&w=900&q=80" alt="Green nature">
         </div>
         <div class="experience-badge">
-          <h3>15+</h3>
-          <p>Years of Experience</p>
+          <h3>108</h3>
+          <p>Acres of Sacred Farm</p>
         </div>
       </div>
 
       <div class="about-content reveal">
-        <span class="section-tag">About Our Farm</span>
-        <h2 class="section-title">Growing Healthy Food with <span>Care & Commitment</span></h2>
+        <span class="section-tag">About the Farm</span>
+        <h2 class="section-title">Where Agriculture Becomes <span>Seva</span></h2>
         <p>
-          At KrishiAura, we believe agriculture is more than cultivation — it is a responsibility to nature,
-          health, and future generations. Our farm uses sustainable methods, smart irrigation, and careful
-          harvesting to ensure every product is fresh, pure, and premium.
+          ISKCON FARM HOUSE is a 108-acre spiritual farm dedicated to the service of Lord Krishna through
+          natural and sustainable agriculture. This is not a commercial farm; rather, it is a sacred space
+          where grains, fruits, vegetables, flowers, herbs, and other plants are cultivated with devotion
+          for temple seva.
         </p>
         <p>
-          Whether it’s grains, vegetables, fruits, or specialty farm produce, we focus on natural quality,
-          customer trust, and a beautiful balance between tradition and innovation.
+          The produce grown here is used for deity offerings, temple cooking, and free prasadam distribution
+          to devotees and visitors. Every aspect of the farm reflects a harmony between nature, simplicity,
+          sustainability, and Krishna consciousness.
+        </p>
+        <p>
+          Beyond cultivation, the farm also serves as a place of learning and inspiration, where visitors can
+          explore plant diversity, understand the purpose of each plant, and experience how agriculture can be
+          connected with devotion and service.
         </p>
 
         <ul class="about-list">
-          <li><i class="fa-solid fa-circle-check"></i> 100% organic and naturally cultivated crops</li>
-          <li><i class="fa-solid fa-circle-check"></i> Sustainable soil and water management</li>
-          <li><i class="fa-solid fa-circle-check"></i> Farm-fresh delivery with premium quality standards</li>
-          <li><i class="fa-solid fa-circle-check"></i> Trusted by families, retailers, and local markets</li>
+          <li><i class="fa-solid fa-circle-check"></i> Non-commercial farm dedicated to Krishna seva</li>
+          <li><i class="fa-solid fa-circle-check"></i> Produce used for offerings, temple cooking, and prasadam</li>
+          <li><i class="fa-solid fa-circle-check"></i> Sacred flowers and plants for deity worship</li>
+          <li><i class="fa-solid fa-circle-check"></i> Educational experience for visitors and devotees</li>
         </ul>
 
-        <a href="#contact" class="btn btn-primary">
-          Learn More <i class="fa-solid fa-arrow-right"></i>
+        <a href="#services" class="btn btn-primary">
+          Explore Temple Seva <i class="fa-solid fa-arrow-right"></i>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- Products -->
-  <section id="products">
+  <!-- Plant Collection -->
+  <section id="plants">
     <div class="container">
-      <span class="section-tag reveal">Featured Produce</span>
-      <h2 class="section-title reveal">Farm Fresh <span>Products</span></h2>
+      <span class="section-tag reveal">Our Sacred Plant Collection</span>
+      <h2 class="section-title reveal">Plants Grown with <span>Purpose & Devotion</span></h2>
       <p class="section-subtitle reveal">
-        Discover our premium range of organic produce grown with care, harvested fresh, and delivered with quality.
+        Explore a beautiful collection of grains, fruits, flowers, herbs, and sacred plants grown across
+        our 108-acre farm. Each plant supports temple life, prasadam preparation, ecological balance,
+        and spiritual service.
       </p>
 
-      <div class="grid products-grid">
-        <div class="card product-card reveal">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=80" alt="Organic Rice">
-            <span class="product-badge">Best Seller</span>
+      <div class="grid plants-grid">
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1574323347407-f5e1ad6d020b?auto=format&fit=crop&w=900&q=80" alt="Rice">
+            <span class="plant-badge">Grain</span>
           </div>
-          <div class="product-content">
-            <h3>Organic Rice</h3>
-            <p>Premium quality naturally cultivated rice with rich taste, purity, and healthy nutrition.</p>
-            <div class="product-footer">
-              <span class="product-price">₹60 / kg</span>
-              <a href="#contact" class="btn btn-outline">Order Now</a>
-            </div>
+          <div class="plant-content">
+            <h3>Sacred Rice</h3>
+            <p>Traditionally cultivated rice grown naturally and used in temple cooking and prasadam preparation.</p>
+            <div class="plant-purpose">Purpose: Daily prasadam & temple kitchen support</div>
           </div>
         </div>
 
-        <div class="card product-card reveal">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Fresh Vegetables">
-            <span class="product-badge">Fresh</span>
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?auto=format&fit=crop&w=900&q=80" alt="Banana">
+            <span class="plant-badge">Fruit</span>
           </div>
-          <div class="product-content">
-            <h3>Fresh Vegetables</h3>
-            <p>Daily harvested vegetables full of natural freshness, vitamins, and farm-to-home quality.</p>
-            <div class="product-footer">
-              <span class="product-price">₹40 / kg</span>
-              <a href="#contact" class="btn btn-outline">Order Now</a>
-            </div>
+          <div class="plant-content">
+            <h3>Banana Grove</h3>
+            <p>Banana plants provide nutritious fruits and leaves that can be used in devotional and traditional settings.</p>
+            <div class="plant-purpose">Purpose: Offerings, prasadam, and natural farm utility</div>
           </div>
         </div>
 
-        <div class="card product-card reveal">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1619566636858-adf3ef46400b?auto=format&fit=crop&w=900&q=80" alt="Seasonal Fruits">
-            <span class="product-badge">Organic</span>
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1615485925873-6f4f89cbb6d8?auto=format&fit=crop&w=900&q=80" alt="Coconut">
+            <span class="plant-badge">Sacred Fruit</span>
           </div>
-          <div class="product-content">
-            <h3>Seasonal Fruits</h3>
-            <p>Sweet, healthy, and naturally ripened fruits sourced directly from our sustainable orchards.</p>
-            <div class="product-footer">
-              <span class="product-price">₹90 / kg</span>
-              <a href="#contact" class="btn btn-outline">Order Now</a>
-            </div>
+          <div class="plant-content">
+            <h3>Coconut Trees</h3>
+            <p>Coconut is considered auspicious and useful in temple offerings, cooking, and traditional rituals.</p>
+            <div class="plant-purpose">Purpose: Deity offerings and ceremonial use</div>
           </div>
         </div>
 
-        <div class="card product-card reveal">
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Natural Honey">
-            <span class="product-badge">Premium</span>
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=900&q=80" alt="Vegetables">
+            <span class="plant-badge">Vegetables</span>
           </div>
-          <div class="product-content">
-            <h3>Natural Honey</h3>
-            <p>Pure farm honey collected with care, packed with natural sweetness and nutritional benefits.</p>
-            <div class="product-footer">
-              <span class="product-price">₹280 / jar</span>
-              <a href="#contact" class="btn btn-outline">Order Now</a>
-            </div>
+          <div class="plant-content">
+            <h3>Seasonal Vegetables</h3>
+            <p>A variety of naturally grown vegetables that support healthy cooking for devotees and guests.</p>
+            <div class="plant-purpose">Purpose: Temple cooking and free prasadam distribution</div>
+          </div>
+        </div>
+
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1592841200221-9f9c88d8b0d5?auto=format&fit=crop&w=900&q=80" alt="Flowers">
+            <span class="plant-badge">Flowers</span>
+          </div>
+          <div class="plant-content">
+            <h3>Deity Flowers</h3>
+            <p>Fragrant and colorful flowers such as marigold, rose, and jasmine for garlands and worship.</p>
+            <div class="plant-purpose">Purpose: Daily deity decoration and altar seva</div>
+          </div>
+        </div>
+
+        <div class="card plant-card reveal">
+          <div class="plant-image">
+            <img src="https://images.unsplash.com/photo-1471193945509-9ad0617afabf?auto=format&fit=crop&w=900&q=80" alt="Tulasi">
+            <span class="plant-badge">Sacred Plant</span>
+          </div>
+          <div class="plant-content">
+            <h3>Tulasi Garden</h3>
+            <p>Tulasi Maharani is lovingly maintained as a sacred and central part of devotional farm life.</p>
+            <div class="plant-purpose">Purpose: Worship, spiritual significance, and devotional care</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Services -->
+  <!-- Temple Seva -->
   <section id="services">
     <div class="container">
-      <span class="section-tag reveal">What We Offer</span>
-      <h2 class="section-title reveal">Our Agriculture <span>Services</span></h2>
+      <span class="section-tag reveal">How the Farm Serves the Temple</span>
+      <h2 class="section-title reveal">Temple Seva Through <span>Sacred Cultivation</span></h2>
       <p class="section-subtitle reveal">
-        More than produce — we provide premium agriculture solutions for homes, businesses, and local markets.
+        Every seed planted here carries a purpose — to nourish devotion, support temple life, and serve
+        visitors through sanctified offerings and prasadam.
       </p>
 
       <div class="grid services-grid">
         <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-basket-shopping"></i></div>
-          <h3>Fresh Produce Supply</h3>
-          <p>Daily supply of farm-fresh vegetables, fruits, grains, and natural produce for homes and stores.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="feature-icon"><i class="fa-solid fa-gopuram"></i></div>
+          <h3>Temple Offering Support</h3>
+          <p>Grains, fruits, flowers, and sacred plants are cultivated with devotion and offered in the service of Lord Krishna.</p>
         </div>
 
         <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-store"></i></div>
-          <h3>Wholesale Orders</h3>
-          <p>Reliable bulk supply for local retailers, restaurants, organic stores, and agriculture partners.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="feature-icon"><i class="fa-solid fa-bowl-rice"></i></div>
+          <h3>Prasadam Preparation</h3>
+          <p>Farm produce is used in preparing sanctified meals distributed freely to devotees, visitors, and guests.</p>
         </div>
 
         <div class="card service-card reveal">
-          <div class="feature-icon"><i class="fa-solid fa-flask-vial"></i></div>
-          <h3>Organic Consultation</h3>
-          <p>Guidance on sustainable cultivation, organic methods, crop care, and efficient farm practices.</p>
-          <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="feature-icon"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Spiritual Ecology & Learning</h3>
+          <p>The farm inspires visitors to understand how nature, agriculture, sustainability, and devotion can beautifully coexist.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Process -->
+  <!-- Sacred Journey -->
   <section id="process">
     <div class="container">
-      <span class="section-tag reveal">How We Work</span>
-      <h2 class="section-title reveal">From Soil to <span>Supply</span></h2>
+      <span class="section-tag reveal">From Field to Prasadam</span>
+      <h2 class="section-title reveal">The Journey of <span>Sacred Service</span></h2>
       <p class="section-subtitle reveal">
-        Our farm follows a thoughtful, quality-first process to ensure every product reaches you fresh and healthy.
+        A beautiful devotional cycle connects the soil, the harvest, the temple, and the hearts of devotees.
       </p>
 
       <div class="grid process-grid">
         <div class="card process-card reveal">
           <div class="process-number">01</div>
-          <h3>Soil Preparation</h3>
-          <p>We enrich the land naturally to maintain soil health and long-term fertility.</p>
+          <h3>Natural Cultivation</h3>
+          <p>Seeds are planted and nurtured with care using natural and sustainable farming methods.</p>
         </div>
 
         <div class="card process-card reveal">
           <div class="process-number">02</div>
-          <h3>Natural Cultivation</h3>
-          <p>Seeds are nurtured with organic care, smart irrigation, and sustainable farming methods.</p>
+          <h3>Harvesting</h3>
+          <p>Produce is harvested at the right time with gratitude and devotion.</p>
         </div>
 
         <div class="card process-card reveal">
           <div class="process-number">03</div>
-          <h3>Fresh Harvesting</h3>
-          <p>Produce is harvested at the ideal stage for maximum freshness, taste, and nutrition.</p>
+          <h3>Offering to Krishna</h3>
+          <p>Selected produce, flowers, and sacred items are offered in temple seva and deity worship.</p>
         </div>
 
         <div class="card process-card reveal">
           <div class="process-number">04</div>
-          <h3>Safe Delivery</h3>
-          <p>Products are packed carefully and delivered fast to preserve quality and natural freshness.</p>
+          <h3>Temple Cooking</h3>
+          <p>The farm's produce is lovingly used in the temple kitchen for prasadam preparation.</p>
+        </div>
+
+        <div class="card process-card reveal">
+          <div class="process-number">05</div>
+          <h3>Free Distribution</h3>
+          <p>Sanctified prasadam is distributed freely to devotees and visitors who come to the temple.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Testimonials -->
+  <!-- Visitor Reflections -->
   <section id="testimonials">
     <div class="container">
-      <span class="section-tag reveal">Customer Love</span>
-      <h2 class="section-title reveal">What People Say About <span>Us</span></h2>
+      <span class="section-tag reveal">Visitor Reflections</span>
+      <h2 class="section-title reveal">Experiences from <span>Devotees & Visitors</span></h2>
       <p class="section-subtitle reveal">
-        Trusted by customers who value natural freshness, healthy living, and premium farm quality.
+        The farm leaves a lasting impression on those who visit — not only through nature, but through peace,
+        devotion, and the spirit of service.
       </p>
 
       <div class="grid testimonials-grid">
@@ -1629,13 +1640,13 @@
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
           <p>
-            “The vegetables are always fresh and taste much better than market produce. You can really feel the quality.”
+            “Walking through the farm felt deeply peaceful. It was inspiring to see how agriculture can be fully connected with devotion and seva.”
           </p>
           <div class="client">
-            <div class="client-avatar">RK</div>
+            <div class="client-avatar">DM</div>
             <div>
-              <h4>Ravi Kumar</h4>
-              <span>Regular Customer</span>
+              <h4>Devotee Madhava</h4>
+              <span>Temple Visitor</span>
             </div>
           </div>
         </div>
@@ -1645,13 +1656,13 @@
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
           <p>
-            “Their organic rice and honey are excellent. Premium quality, clean packaging, and very professional service.”
+            “The idea that the farm produce is used for offerings and free prasadam touched my heart. It is a beautiful expression of Krishna consciousness.”
           </p>
           <div class="client">
-            <div class="client-avatar">SP</div>
+            <div class="client-avatar">SB</div>
             <div>
-              <h4>Sneha Patil</h4>
-              <span>Home Buyer</span>
+              <h4>Shyama Bhakta</h4>
+              <span>Visiting Devotee</span>
             </div>
           </div>
         </div>
@@ -1661,13 +1672,13 @@
             <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
           </div>
           <p>
-            “We source produce in bulk from KrishiAura for our store. Great consistency, freshness, and customer support.”
+            “The farm is not just land — it is a spiritual ecosystem. Seeing the sacred plants and understanding their purpose was unforgettable.”
           </p>
           <div class="client">
-            <div class="client-avatar">AM</div>
+            <div class="client-avatar">AK</div>
             <div>
-              <h4>Anita Mehta</h4>
-              <span>Retail Partner</span>
+              <h4>Ananta Kirtan</h4>
+              <span>Volunteer Guest</span>
             </div>
           </div>
         </div>
@@ -1680,16 +1691,16 @@
     <div class="container">
       <div class="cta-box reveal">
         <div>
-          <h2>Bring Farm-Fresh Goodness Straight to Your Home</h2>
+          <h2>Experience Nature, Devotion & Sacred Farming</h2>
           <p>
-            Discover premium organic produce, naturally grown with care and delivered with trust.
-            Start your journey toward healthier living with KrishiAura.
+            Visit ISKCON FARM HOUSE and explore how a 108-acre farm can support temple life, sacred offerings,
+            free prasadam, and spiritual education in harmony with nature.
           </p>
         </div>
 
         <div class="cta-actions">
-          <a href="#products" class="btn btn-primary">Shop Fresh Produce</a>
-          <a href="#contact" class="btn btn-outline">Talk to Us</a>
+          <a href="#plants" class="btn btn-primary">Explore Plant Collection</a>
+          <a href="#contact" class="btn btn-outline">Plan Your Visit</a>
         </div>
       </div>
     </div>
@@ -1698,21 +1709,22 @@
   <!-- Contact -->
   <section id="contact">
     <div class="container">
-      <span class="section-tag reveal">Get In Touch</span>
-      <h2 class="section-title reveal">Contact <span>KrishiAura</span></h2>
+      <span class="section-tag reveal">Visit the Farm</span>
+      <h2 class="section-title reveal">Contact <span>ISKCON FARM HOUSE</span></h2>
       <p class="section-subtitle reveal">
-        Have questions, want wholesale supply, or need fresh produce? Reach out and we’ll be happy to help.
+        If you wish to visit, learn about the plant collection, or connect regarding the farm and temple seva,
+        feel free to reach out.
       </p>
 
       <div class="contact-wrap">
         <div class="card contact-info reveal">
-          <h3 class="panel-title">Contact Information</h3>
+          <h3 class="panel-title">Farm Contact Information</h3>
           <div class="info-list">
             <div class="info-item">
               <div class="info-icon"><i class="fa-solid fa-location-dot"></i></div>
               <div class="info-text">
-                <h4>Farm Location</h4>
-                <p>Organic Valley Road, Green Fields, Karnataka, India</p>
+                <h4>Farm Address</h4>
+                <p>Survey No. 411, Taluk, Mahadevpura, Karnataka 571415, India</p>
               </div>
             </div>
 
@@ -1720,7 +1732,7 @@
               <div class="info-icon"><i class="fa-solid fa-phone"></i></div>
               <div class="info-text">
                 <h4>Phone Number</h4>
-                <p>+91 98765 43210</p>
+                <p>+91 9945243930</p>
               </div>
             </div>
 
@@ -1728,22 +1740,22 @@
               <div class="info-icon"><i class="fa-solid fa-envelope"></i></div>
               <div class="info-text">
                 <h4>Email Address</h4>
-                <p>hello@krishiaura.com</p>
+                <p>anirudhsa3101@gmail.com</p>
               </div>
             </div>
 
             <div class="info-item">
               <div class="info-icon"><i class="fa-solid fa-clock"></i></div>
               <div class="info-text">
-                <h4>Working Hours</h4>
-                <p>Mon - Sat: 7:00 AM to 7:00 PM</p>
+                <h4>Suggested Visiting Hours</h4>
+                <p>Morning: 7:00 AM – 11:00 AM | Evening: 4:00 PM – 6:30 PM</p>
               </div>
             </div>
           </div>
         </div>
 
         <div class="card contact-form reveal">
-          <h3 class="panel-title" style="margin-bottom:18px;">Send Us a Message</h3>
+          <h3 class="panel-title" style="margin-bottom:18px;">Send a Message</h3>
           <form id="contactForm">
             <div class="form-grid">
               <div class="input-group">
@@ -1776,14 +1788,14 @@
   <footer>
     <div class="container footer-wrap">
       <div class="footer-left">
-        © <span id="year"></span> <strong>KrishiAura</strong>. All Rights Reserved. Built with 🌿 for premium agriculture.
+        © <span id="year"></span> <strong>ISKCON FARM HOUSE</strong> — Hare Krishna Nature Farm. Built with devotion 🌿🙏
       </div>
 
       <div class="socials">
         <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
         <a href="#"><i class="fa-brands fa-instagram"></i></a>
-        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
       </div>
     </div>
   </footer>
@@ -1881,7 +1893,7 @@
           const updateCounter = () => {
             count += increment;
             if (count >= target) {
-              counter.textContent = target + (target >= 100 ? '+' : '+');
+              counter.textContent = target + '+';
             } else {
               counter.textContent = count;
               requestAnimationFrame(updateCounter);
@@ -1908,7 +1920,7 @@
         return;
       }
 
-      alert(`Thank you, ${name}! Your message has been sent successfully. We will contact you soon.`);
+      alert(`Hare Krishna, ${name}! Your message has been sent successfully. We will get back to you soon.`);
       contactForm.reset();
     });
 
